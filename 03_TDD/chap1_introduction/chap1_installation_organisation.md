@@ -28,10 +28,10 @@ composer search phpunit
 composer show phpunit/phpunit --all 
 
 # Installation locale
-composer require --dev phpunit/phpunit ^9
+composer require --dev phpunit/phpunit
 
 # Installation globale
-composer global require phpunit/phpunit ^9
+composer global require phpunit/phpunit
 ```
 
 Une autre manière installer phpunit est d'installer l'exécutable :
