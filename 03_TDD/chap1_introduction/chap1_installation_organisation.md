@@ -209,10 +209,10 @@ class DataTest extends TestCase
     public function additionProvider()
     {
         return [
-            [0, 0, 0],
+            [0, 0, 0], // $a, $b, $expected
             [0, 1, 1],
             [1, 0, 1],
-            [1, 1, 3]
+            [1, 1, 2]
         ];
     }
 }
@@ -228,6 +228,7 @@ class ExceptionTest extends TestCase
     public function testException()
     {
         $this->expectException(InvalidArgumentException::class);
+        $this->model->save($user); // $user n'est pas, par exemple, un argument attenu, nauvais type, et dans la méthode save on lève dans ce cas une exception 
     }
 }
 ```
