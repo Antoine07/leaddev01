@@ -89,7 +89,11 @@ Dans le fichier composer.json écrivez le code suivant, la classe Message sera d
 
 ## La méthode setUp et tearDown
 
-La méthode **setUp** dans la classe MessageTest est appelée en premier avant tous les autres tests, un test est une méthode d'une classe de test. Nous n'implémentons pas la méthode **tearDown**, elle est utile si la méthode **setUp** alloue des ressources externes comme des fichiers ou base de données.
+La méthode **setUp** dans la classe MessageTest est appelée en premier avant tous les autres tests, et est appelée avant chaque test.
+
+Nous n'implémentons pas la méthode **tearDown**, elle est utile si la méthode **setUp** alloue des ressources externes comme l'ouverture de fichiers ou base de données. Elle permettra dans ce cas de fermer ces ressources.
+
+Rappel : une classe tests est basée sur l'isolation, en terme de propriétés définies dans la classe de test, de chaque test. Chaque test repart avec ces propriété ré-initialisée.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -209,10 +213,10 @@ class DataTest extends TestCase
     public function additionProvider()
     {
         return [
-            [0, 0, 0],
+            [0, 0, 0], // $a, $b, $expected
             [0, 1, 1],
             [1, 0, 1],
-            [1, 1, 3]
+            [1, 1, 2]
         ];
     }
 }
@@ -228,6 +232,7 @@ class ExceptionTest extends TestCase
     public function testException()
     {
         $this->expectException(InvalidArgumentException::class);
+        $this->model->save($user); // $user n'est pas, par exemple, un argument attenu, nauvais type, et dans la méthode save on lève dans ce cas une exception 
     }
 }
 ```
