@@ -8,7 +8,7 @@ Nous verrons également qu'il existe des dépendances logiques entre les tests, 
 
 Retenez chaque test est une méthode qui est isolée des autres tests (méthodes) dans une classe de test.
 
-Une application est bien testée si les tests unitaires couvrent 80% de la logique métier.
+Une application est bien testée si les tests unitaires couvrent 80% de la logique métier. Dans ce cas l'application a peu de chance de produire des bugs en production et également pourra facilement être étendue avec des nouvelles fonctionnalités, bien sûr on doit si l'application évolue refaire des tests.
 
 **Martin Fowler:**
 
