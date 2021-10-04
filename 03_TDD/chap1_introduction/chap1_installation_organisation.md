@@ -21,9 +21,7 @@ Concepteur et auteur conférencier informaticien britanique, pionnier et une ré
 Vous devez avoir une version de PHP >= 7.4
 
 On va installer **PHPUnit** qui est un framework de tests. Nous pouvons l'installer de manière globale, c'est-à-dire 
-dans le dossier /usr/local/bin de notre machine ou alors, l'installer uniquement pour le projet en cours. Nous allons 
-l'installer pour notre projet Cart, c'est-à-dire en tant que de dépendance (dossier vendor). Pour se faire nous allons taper les lignes suivantes. Les trois commandes suivantes permettent respectivement de chercher un composant, de montrer les détails d'un composant et d'installer celui-ci dans 
-le dossier vendor du projet :
+dans le dossier /usr/local/bin de notre machine ou alors, l'installer uniquement pour le projet en cours.
 
   ```bash
 composer search phpunit
