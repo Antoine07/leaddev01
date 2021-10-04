@@ -1,12 +1,12 @@
 # Introduction & Présentation des tests unitaires
 
-Nous allons aborder les tests unitaires de manière direct dans le code déjà écrit. Nous verrons plus tard une autre manière de procédé que l'on appelle TDD ,Tests Driven Developpment, qui consiste à créer des tests avant même de d'implémenter la logique métier dans les classes de l'application.
+Nous allons aborder les tests unitaires de manière direct dans le code déjà écrit. Nous verrons plus tard une autre manière de procéder que l'on appelle TDD ,Tests Driven Developpment, qui consiste à créer des tests avant même d'implémenter la logique métier dans les classes de l'application.
 
-Les tests unitaires vont vous aidez à identifier et corriger les bugs à refactorer le code et écrire de la documentation précise. Les tests unitaires doivent couvrir tous les possibilités algorithmiques d'un programme. Chaque test unitaire test une logique d'une méthode spécifique.
+Les tests unitaires vont vous aider à identifier et corriger les bugs, à refactorer le code et écrire de une documentation précise sur les fonctionnalités de vos méthodes. Les tests unitaires doivent couvrir toutes les possibilités algorithmiques d'un programme. Chaque test unitaire test une logique d'une méthode spécifique.
 
-Nous verrons également qu'il existe des dépendances logiques entre les tests, dans des scénarios de tests.
+Nous verrons également qu'il existe des dépendances logiques entre les tests, des scénarios de tests, mais que les tests eux-mêmes sont isolés.
 
-Cependant il faut préciser également que chaque test est une méthode qui est isolé des autres tests.
+Retenez chaque test est une méthode qui est isolée des autres tests (méthodes) dans une classe de test.
 
 Une application est bien testée si les tests unitaires couvrent 80% de la logique métier.
 
