@@ -6,5 +6,11 @@
             "email": "antoine.lucsko@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "App\\" : "src/",
+            "" : "tests/"
+        }
+    },
     "require": {}
 }

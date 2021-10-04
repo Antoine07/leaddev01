@@ -85,7 +85,7 @@ Dans le fichier composer.json écrivez le code suivant, la classe Message sera d
 }
 ```
 
-à la racine du dossier Messages nous allons placer un fichier de configuration pour phpunit, créez ce fichier et mettez le code suivant, on définit un fichier **autoload.php** de bootstrap à la racine du dossier de tests. 
+à la racine du dossier Messages nous allons placer un fichier de configuration pour phpunit, créez ce fichier et mettez le code suivant, on définit un fichier **bootstrap.php** de bootstrap à la racine du dossier de tests. 
 
 ## La méthode setUp et tearDown
 
@@ -93,7 +93,7 @@ La méthode **setUp** dans la classe MessageTest est appelée en premier avant t
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="tests/autoload.php"
+<phpunit bootstrap="tests/bootstrap.php"
          colors="true">
     <testsuites>
         <testsuite name="Message">
@@ -150,7 +150,7 @@ class Message
     public function get(): string
     {
 
-        return $this->text;
+         return $this->translates[$this->lang];
     }
 
     public function setLang(string $lang): void
@@ -167,6 +167,8 @@ phpunit
 ```
 
 Indication : si tous les tests sont bons alors, ils seront verts.
+
+Question changez la langue dans un test supplémentaire et vérifiez que la classe pour la version fr renvoie bien "Bonjour tout le monde!." Si ce n'est pas le cas corriger le code métier pour faire passer le test.
 
 ## 01 Exercice DotEnv
 
