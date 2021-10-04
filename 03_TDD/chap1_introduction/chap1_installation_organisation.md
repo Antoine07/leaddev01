@@ -89,7 +89,9 @@ Dans le fichier composer.json écrivez le code suivant, la classe Message sera d
 
 ## La méthode setUp et tearDown
 
-La méthode **setUp** dans la classe MessageTest est appelée en premier avant tous les autres tests, un test est une méthode d'une classe de test. Nous n'implémentons pas la méthode **tearDown**, elle est utile si la méthode **setUp** alloue des ressources externes comme des fichiers ou base de données.
+La méthode **setUp** dans la classe MessageTest est appelée en premier avant tous les autres tests, et est appelée avant chaque test.
+
+Nous n'implémentons pas la méthode **tearDown**, elle est utile si la méthode **setUp** alloue des ressources externes comme l'ouverture de fichiers ou base de données.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
