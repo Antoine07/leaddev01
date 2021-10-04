@@ -1,0 +1,10 @@
+{
+    "name": "antoine/message",
+    "authors": [
+        {
+            "name": "Antoine07",
+            "email": "antoine.lucsko@gmail.com"
+        }
+    ],
+    "require": {}
+}
