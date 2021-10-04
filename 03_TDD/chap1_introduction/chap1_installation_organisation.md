@@ -1,14 +1,14 @@
 # Introduction & Présentation des tests unitaires
 
-Nous allons aborder les tests unitaires de manière direct dans le code déjà écrit. Nous verrons plus tard une autre manière de procédé que l'on appelle TDD ,Tests Driven Developpment, qui consiste à créer des tests avant même de d'implémenter la logique métier dans les classes de l'application.
+Nous allons aborder les tests unitaires de manière direct dans le code déjà écrit. Nous verrons plus tard une autre manière de procéder que l'on appelle TDD ,Tests Driven Developpment, qui consiste à créer des tests avant même d'implémenter la logique métier dans les classes de l'application.
 
-Les tests unitaires vont vous aidez à identifier et corriger les bugs à refactorer le code et écrire de la documentation précise. Les tests unitaires doivent couvrir tous les possibilités algorithmiques d'un programme. Chaque test unitaire test une logique d'une méthode spécifique.
+Les tests unitaires vont vous aider à identifier et corriger les bugs, à refactorer le code et écrire de une documentation précise sur les fonctionnalités de vos méthodes. Les tests unitaires doivent couvrir toutes les possibilités algorithmiques d'un programme. Chaque test unitaire test une logique d'une méthode spécifique.
 
-Nous verrons également qu'il existe des dépendances logiques entre les tests, dans des scénarios de tests.
+Nous verrons également qu'il existe des dépendances logiques entre les tests, des scénarios de tests, mais que les tests eux-mêmes sont isolés.
 
-Cependant il faut préciser également que chaque test est une méthode qui est isolé des autres tests.
+Retenez chaque test est une méthode qui est isolée des autres tests (méthodes) dans une classe de test.
 
-Une application est bien testée si les tests unitaires couvrent 80% de la logique métier.
+Une application est bien testée si les tests unitaires couvrent 80% de la logique métier. Dans ce cas l'application a peu de chance de produire des bugs en production et également pourra facilement être étendue avec des nouvelles fonctionnalités, bien sûr on doit si l'application évolue refaire des tests.
 
 **Martin Fowler:**
 
@@ -21,19 +21,17 @@ Concepteur et auteur conférencier informaticien britanique, pionnier et une ré
 Vous devez avoir une version de PHP >= 7.4
 
 On va installer **PHPUnit** qui est un framework de tests. Nous pouvons l'installer de manière globale, c'est-à-dire 
-dans le dossier /usr/local/bin de notre machine ou alors, l'installer uniquement pour le projet en cours. Nous allons 
-l'installer pour notre projet Cart, c'est-à-dire en tant que de dépendance (dossier vendor). Pour se faire nous allons taper les lignes suivantes. Les trois commandes suivantes permettent respectivement de chercher un composant, de montrer les détails d'un composant et d'installer celui-ci dans 
-le dossier vendor du projet :
+dans le dossier /usr/local/bin de notre machine ou alors, l'installer uniquement pour le projet en cours.
 
   ```bash
 composer search phpunit
 composer show phpunit/phpunit --all 
 
 # Installation locale
-composer require --dev phpunit/phpunit ^9
+composer require --dev phpunit/phpunit
 
 # Installation globale
-composer global require phpunit/phpunit ^9
+composer global require phpunit/phpunit
 ```
 
 Une autre manière installer phpunit est d'installer l'exécutable :
@@ -438,32 +436,5 @@ class Even implements Iterator {
         var_dump(__METHOD__);
         return isset($this->array[$this->position]);
     }
-}
-```
-
-## 05 Tri par insertion
-
-La classe suivante fait un tri par insertion. Testez la avec quelques listes de valeurs 
-
-```php
-class Insertion
-{
-
-    public function run(array $list)
-    {
-        $len = count($list);
-        for ($i = 1; $i < $len; $i++) {
-            $elem = $list[$i];
-            // si le test est false on sort de la boucle
-            for ($j = $i; $j > 0 && $list[$j - 1] > $elem; $j--) {
-                $list[$j] = $list[$j - 1]; // on décalle insertion
-            }
-            // $j prend la valeur de la dernière valeur (premier false)
-            $list[$j] = $elem;
-        }
-
-        return $list;
-    }
-
 }
 ```
