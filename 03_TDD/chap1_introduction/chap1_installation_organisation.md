@@ -168,7 +168,7 @@ phpunit
 
 Indication : si tous les tests sont bons alors, ils seront verts.
 
-Question changez la langue dans un test supplémentaire et vérifiez que la classe pour la version fr renvoie bien "Bonjour tout le monde!." Si ce n'est pas le cas corriger le code métier pour faire passer le test.
+**Question changez la langue dans un test supplémentaire et vérifiez que la classe pour la version fr renvoie bien "Bonjour tout le monde!." Si ce n'est pas le cas corriger le code métier pour faire passer le test.**
 
 ## 01 Exercice DotEnv
 
