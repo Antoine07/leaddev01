@@ -7,7 +7,7 @@ class Message
     public function __construct(
         private string $lang = 'en',  
         private array $translates = [
-            'fr' => 'Bonjour les gesn!', 
+            'fr' => 'Bonjour tout le monde!', 
             'en' => 'Hello World!'
             ]
         )

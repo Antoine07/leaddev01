@@ -12,8 +12,21 @@ class MessageTest extends TestCase{
         $this->message = new Message('en');
     }
 
-    public function testOne(){
+    /**
+     * @test langue en 
+     */
+    public function testLangEn(){
 
         $this->assertSame("Hello World!",$this->message->get());
+    }
+
+    /**
+     * @test langue fr 
+     */
+    public function testLangfr(){
+
+        $this->message->setLang('fr');
+
+        $this->assertSame("Bonjour tout le monde!",$this->message->get());
     }
 }
