@@ -2,9 +2,9 @@
 
 use PHPUnit\Framework\TestCase;
 
-use App\{User, Model};
+use App\{User, ModelPrepare};
 
-class UserTest extends TestCase
+class UserPrepareTest extends TestCase
 {
 
   protected $model;
@@ -23,7 +23,7 @@ class UserTest extends TestCase
             "
     );
 
-    $this->model = new Model($this->pdo);
+    $this->model = new ModelPrepare($this->pdo);
 
     $users = [
       ['username' => 'Alan'], // id 
