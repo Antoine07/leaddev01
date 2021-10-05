@@ -2,9 +2,9 @@
 
 namespace App\Model;
 
-class Divisor
+class Divisor implements Calculable
 {
-    public function division(Number $a, Number $b): NumberString
+    public function exec(Number $a, Number $b): NumberString
     {
 
         if ((int) $b->getNumber() == 0) throw new \DivisionByZeroError("Impossible de diviser par zéro.");
