@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Yaml\Parser;
 
 use App\{User, Model};
 
@@ -18,18 +19,16 @@ class UserTest extends TestCase
       "CREATE TABLE IF NOT EXISTS user
           (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username VARCHAR( 225 )
+            username VARCHAR( 225 ),
+            createdAt DATETIME
           )
             "
     );
 
     $this->model = new Model($this->pdo);
 
-    $users = [
-      ['username' => 'Alan'], // id 
-      ['username' => 'Sophie'],
-      ['username' => 'Bernard'],
-    ];
+    $yaml = new Parser();
+    $users = $yaml->parse(file_get_contents(__DIR__ . '/_data/seed.yml'))['users'];
 
     $this->model->hydrate($users);
   }
@@ -39,7 +38,7 @@ class UserTest extends TestCase
    */
   public function testSeedsCreate()
   {
-    $this->assertEquals(3, count($this->model->all()));
+    $this->assertEquals(11, count($this->model->all()));
   }
 
   /**
@@ -51,7 +50,7 @@ class UserTest extends TestCase
     $user->username = "Phil";
     $this->model->save($user); 
 
-    $this->assertEquals(4, count($this->model->all()));
+    $this->assertEquals(12, count($this->model->all()));
   }
 
   /**

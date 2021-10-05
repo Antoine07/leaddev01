@@ -5,6 +5,7 @@ namespace App;
 class User {
 
     private string $username;
+    private  $createdAt = '2021-04-26 12:14:20';
     private int $id;
 
     // $name le nom de la pp et $value c'est la valeur

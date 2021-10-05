@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 use App\{User, ModelPrepare};
+use Symfony\Component\Yaml\Parser;
 
 class UserPrepareTest extends TestCase
 {
@@ -18,18 +19,16 @@ class UserPrepareTest extends TestCase
       "CREATE TABLE IF NOT EXISTS user
           (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            username VARCHAR( 225 )
+            username VARCHAR( 225 ),
+            createdAt DATETIME
           )
             "
     );
 
     $this->model = new ModelPrepare($this->pdo);
 
-    $users = [
-      ['username' => 'Alan'], // id 
-      ['username' => 'Sophie'],
-      ['username' => 'Bernard'],
-    ];
+    $yaml = new Parser();
+    $users = $yaml->parse(file_get_contents(__DIR__ . '/_data/seed.yml'))['users'];
 
     $this->model->hydrate($users);
   }
@@ -39,7 +38,7 @@ class UserPrepareTest extends TestCase
    */
   public function testSeedsCreate()
   {
-    $this->assertEquals(3, count($this->model->all()));
+    $this->assertEquals(11, count($this->model->all()));
   }
 
   /**
@@ -49,9 +48,9 @@ class UserPrepareTest extends TestCase
   {
     $user = new User;
     $user->username = "Phil";
-    $this->model->save($user); 
+    $this->model->save($user);
 
-    $this->assertEquals(4, count($this->model->all()));
+    $this->assertEquals(12, count($this->model->all()));
   }
 
   /**
@@ -63,7 +62,7 @@ class UserPrepareTest extends TestCase
     $user->username = "Galois";
     $user->id = 1;
 
-    $this->model->update($user) ; 
+    $this->model->update($user);
 
     $userUpdate = $this->model->find(1);
 
@@ -77,6 +76,6 @@ class UserPrepareTest extends TestCase
   {
     $this->model->delete(1);
 
-    $this->assertTrue( $this->model->find(1) === false ); // PDO retourne false si il n'y a pas de données
+    $this->assertTrue($this->model->find(1) === false); // PDO retourne false si il n'y a pas de données
   }
 }

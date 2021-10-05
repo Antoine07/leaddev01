@@ -72,10 +72,13 @@ class ModelPrepare
     public function hydrate(array $users): void
     {
         // prepare donc compilée
-        $stmt = $this->pdo->prepare("INSERT INTO user (username) VALUES (:username)");
+        $stmt = $this->pdo->prepare("INSERT INTO user (username, createdAt) VALUES (:username, :createdAt)");
 
         foreach ($users as $u) {
-            $stmt->execute([':username' => $u['username']]);
+            $stmt->execute([
+                ':username' => $u['username'],
+                ':createdAt' => $u['createdAt'],
+            ]);
         }
 
         $stmt = null;

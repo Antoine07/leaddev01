@@ -76,12 +76,12 @@ class Model
     public function hydrate(array $users): void
     {
         foreach ($users as $u) {
-            $v[] = sprintf(" ('%s') ", $u['username']);
+            $v[] = sprintf(" ('%s', '%s') ", $u['username'], $u['createdAt']);
         }
 
         $v = implode(',', $v);
 
-        $this->pdo->query(sprintf('INSERT INTO user (username) VALUES %s', $v));
+        $this->pdo->query(sprintf('INSERT INTO user (username, createdAt) VALUES %s', $v));
     }
 
     public function save(User $user): void
