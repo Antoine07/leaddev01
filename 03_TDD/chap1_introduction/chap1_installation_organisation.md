@@ -402,16 +402,35 @@ composer require symfony/yaml --dev
 Récupérez le dossier _data dans le dossier Examples et à l'aide du code ci-dessous importez ces données d'exemple dans une autre classe de test UserYamlTest. Vous testerez les mêmes méthodes (ne changez pas le code des méthodes de tests).
 
 ```php
+use Symfony\Component\Yaml\Parser;
+
 $yaml = new Parser();
 $users = $yaml->parse(file_get_contents(__DIR__.'/_data/seed.yml'));
 ```
 
+**Remarque : les seeds YAML sont légers et pratiques, couplés avec des bases de données en mémoire pour tester qu'une partie de la logique des modèles est performant.**
+
 ## 04 Exercice Iterator
 
-1. Une classe PHP qui implémente l'interface Iterator est une classe itérable, à partir de l'exemple suivant créez une classe Even elle n'affiche que les nombres paires. Une fois la classe créée testez son bon fonctionnement.
+1. Une classe PHP qui implémente l'interface Iterator est une classe itérable, à partir de l'exemple suivant créez une classe Even, elle n'affiche que les nombres paires, fixez un maximun de valeur(s) à retourner. Une fois la classe créée testez son bon fonctionnement, vous pouvez imaginer les tests avant même d'implémenter le code utile dans les classes métiers (TDD).
 
 ```php
-class Even implements Iterator {
+
+$even = new Even(max:100);
+
+foreach($even as $n){
+    echo $n;
+}
+
+// 024681012141618202224262830...98
+
+```
+
+- La classe ci-dessous est itérable, elle implémente l'interface PHP Iterator, chaque méthode de cette classe rend la classe itérable.
+
+```php
+
+class Example implements Iterator {
     
     public function __construct(private int $position = 0, array $array =[
         "premierelement",
@@ -420,7 +439,7 @@ class Even implements Iterator {
     }
 
     public function rewind() {
-        var_dump(__METHOD__);
+        var_dump(__METHOD__); // __METHOD__ donne le nom de la méthode appelée dans le script courant
         $this->position = 0;
     }
 
@@ -445,3 +464,7 @@ class Even implements Iterator {
     }
 }
 ```
+
+## 05 Exercice Suite de Fibonacci
+
+Créez une classe de test vérifiant l'algorithmique de la suite de Fibonacci, puis implémentez les méthodes de la classe testée TDD.
