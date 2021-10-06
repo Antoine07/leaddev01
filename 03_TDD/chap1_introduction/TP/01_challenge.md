@@ -1,45 +1,46 @@
 # Challenge 01
 
-Vous devez vous mettre en équipe de 2 pour réaliser ce TP.
+Vous devez vous mettre en équipe de 1 pour réaliser ce TP.
 
 ## Partie 1
 
-Récupérez le dossier Exercice_05_Cart dans le dossier Exercices.
+Récupérez dans le dossier Exercices le dossier Challenge_01.
 
-1. Créez le MockStorage vous permettant de remplacer le storage de la classe Cart.
+Oragnisez le projet afin qu'il soit correctement tester.
 
-2. Définissez une commande de test permettant de valider l'ensemble des méthodes existantes dans la classe métier Cart
+1. Créez le MockStorage il l'implémentera l'interface Storable, il vous permettra de remplacer le storage de la classe Cart afin de la tester. 
 
-3. On décide d'ajouter une fonctionnalité : restoreQuantity cette méthode permettra de retirer une certaine quantité de produit commander. Faites le test avant d'implémenter le code métier dans la classe Cart (TDD).
+2. Définissez des tests permettant de valider l'ensemble des méthodes existantes dans la classe métier Cart.
+
+3. On décide d'ajouter une fonctionnalité : restoreQuantity cette méthode permettra de retirer une certaine quantité d'un produit commandé. Faites le test avant d'implémenter le code métier dans la classe Cart (TDD).
 
 ## Partie 2
 
 Dans la suite de ce TP vous utiliserez PDO.
 
-1. Créez une base de données fruittest dans le fichier autoload.php dans le dossier tests.
+1. Créez une base de données fruittest à l'aide d'un script dans le fichier autoload.php dans le dossier tests. Analysez bien la structure de données pour bien implémentez le StorageMySQL que vous devez mettre en place dans cette partie.
 
 ```php
+// attention au port pour vous connectez à la base de données adaptez le en fonction de votre machine.
 $dbh = new PDO("mysql:host=localhost:8889", $_ENV['USERNAME'], $_ENV['PASSWORD']);
-```
 
-Nous vous donnons le modèle pour gérer les données en base de données avec du SQL
-
-```sql
+$dbh->exec("
+DROP DATABASE IF EXISTS fruittest ;
 CREATE DATABASE fruittest DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE fruittest;
+use fruittest;
 CREATE TABLE IF NOT EXISTS 
-products (
+product (
     ID INT NOT NULL AUTO_INCREMENT, 
     name VARCHAR(100), 
     price DECIMAL(7,2), 
     total DECIMAL(7,2) NOT NULL DEFAULT 0.00, 
-    PRIMARY KEY(id) )
-    ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-    
-INSERT INTO products (name, price) VALUES  ('apple', 10.5), ('raspberry',13), ('strawberry', 7.8)
+    PRIMARY KEY(id) )ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+INSERT INTO product (name, price) VALUES  ('apple', 10.5), ('raspberry',13), ('strawberry', 7.8);
+");
 ```
 
-2. Créez maintenant StorageMySQL et testez cette classe, elle implémentera le contrat Storage.
+2. Créez maintenant StorageMySQL effectivement et testez cette classe, elle implémentera le contrat Storage.
 
 3. Créez maintenant la compagne de tests en considérant ce nouveau Storage dans le projet Cart.
 
@@ -48,3 +49,5 @@ INSERT INTO products (name, price) VALUES  ('apple', 10.5), ('raspberry',13), ('
 - setUpBeforeClass() 
 
 - tearDownAfterClass()
+
+Ces méthodes vous permettrons de définir une connexion et une déconnexion à la base de données.
