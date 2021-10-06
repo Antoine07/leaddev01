@@ -465,6 +465,8 @@ class Example implements Iterator {
 }
 ```
 
-## 05 Exercice Suite de Fibonacci
+## 05 Exercice Suite de Fibonacci TDD
 
-Créez une classe de test vérifiant l'algorithmique de la suite de Fibonacci, puis implémentez les méthodes de la classe testée TDD.
+Créez une classe de tests vérifiant l'algorithmique de la suite de Fibonacci dans une classe, vous devez écrire les tests avant d'implémenter la logique métier de la classe. Une fois un test ou les tests réalisés vous devez vérifier qu'il(s) soi(ent) valide en implémentant le code métier du/des test(s).
+
+Organisez le projet de manière conforme aux recommandations des standards PHP.
