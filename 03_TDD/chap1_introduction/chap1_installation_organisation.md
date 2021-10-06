@@ -509,3 +509,15 @@ function genWhile($max = 10){
 }
 
 ```
+
+## Nombre narcissique
+
+Un nombre narcissique est un nombre qui s'écrit comme suit :
+
+```php
+153 = 1**3 + 5**3 + 3**3;
+```
+
+où la puissance 3 désigne la puissance de 10 du nombre : 3 chiffres == 10**3.
+
+Ecrire un test qui teste si on a un nombre narcissique, utilisez le principe TDD.
