@@ -467,6 +467,45 @@ class Example implements Iterator {
 
 ## 05 Exercice Suite de Fibonacci TDD
 
+### Partie 1
+
 Créez une classe de tests vérifiant l'algorithmique de la suite de Fibonacci dans une classe, vous devez écrire les tests avant d'implémenter la logique métier de la classe. Une fois un test ou les tests réalisés vous devez vérifier qu'il(s) soi(ent) valide en implémentant le code métier du/des test(s).
 
 Organisez le projet de manière conforme aux recommandations des standards PHP.
+
+### Partie 2
+
+Une manière d'optimiser l'empreinte mémoire d'un script est l'utilisation des générateurs. Un générateur est itérable et une fois itéré ne peut plus l'être pour une instance de générateur donné.
+
+Refactorez dans une autre classe en utilisant l'approche des générateurs et testez à l'aide du principe TDD.
+
+Un générateur est une fonction ou méthode ayant le mot clé yield.
+
+```php
+function gen(){
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+// création d'une instance 
+$gen = gen(); 
+
+foreach($gen as $num) echo $num; // 1, 2, 3
+
+// Si on ré-itère sur le générateur il est cette fois vide
+foreach($gen as $num) echo $num; // aucune valeur
+```
+
+Une autre idée de générateur 
+
+```php
+
+function genWhile($max = 10){
+    while($max > 0){
+        yield $max;
+        $max--;
+    }
+}
+
+```
