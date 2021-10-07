@@ -13,6 +13,7 @@ class CartTest extends  TestCase
     {
         // Création d'un Mock
         $this->mockStorage = $this->createMock(Storable::class);
+
         $this->cart = new Cart($this->mockStorage);
         $this->cart->reset();
     }
@@ -44,10 +45,10 @@ class CartTest extends  TestCase
         $this->assertEquals($this->cart->total(), round($sum, 2));
     }
 
-    public function testCallResteMethodStorage(){
-        
-        
-        $this->mockStorage->expects($this->cart->reset())->method('reset');
+    public function testCallResteMethodStorage()
+    {
+        $this->mockStorage->expects($this->once())->method('reset');
+        $this->cart->reset();
+      
     }
-
 }
