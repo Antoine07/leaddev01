@@ -10,5 +10,5 @@ interface Storable{
     // function total():float;
 
     function getStorage():array;
-    function restoreQuantity(string $name, int $quantity):void;
+    function restoreQuantity(string $name, float $quantity):void;
 }
