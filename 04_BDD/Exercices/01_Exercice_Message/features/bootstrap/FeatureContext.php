@@ -6,6 +6,8 @@ use Behat\Gherkin\Node\TableNode;
 
 use App\Message;
 
+use PHPUnit\Framework\Assert;
+
 /**
  * Defines application features from the specific context.
  */
@@ -29,16 +31,8 @@ class FeatureContext implements Context
      */
     public function jaiUnNouveauMessage($message)
     {
-        try {
-            var_dump("scenario 1", $message);
-            $this->message->set($message);
-
-        } catch (\TypeError $e) {
-
-            var_dump("Type Error");
-        }
-
-        
+        $this->message->set($message);
+        if (empty($this->message->get())) throw new Exception("Attention il y a un problème d'enregistrement");
     }
 
     /**
@@ -75,10 +69,27 @@ class FeatureContext implements Context
     }
 
     /**
+     * @Given j'ai un nauvais message :arg1
+     */
+    public function jaiUnNauvaisMessage($message)
+    {
+        try {
+            $this->message->set($message);
+        } catch (TypeError $e) {
+            $this->typeError = 'TypeError';
+        }
+    }
+
+    /**
      * @Then je dois avoir une exception :arg1
      */
     public function jeDoisAvoirUneException($error)
     {
-        var_dump($error);
+        var_dump($error, $this->typeError);
+
+        if ($error != $this->typeError) {
+
+            throw new Exception("Ce n'est pas le bon type d'erreur attendu");
+        }
     }
 }

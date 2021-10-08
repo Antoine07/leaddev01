@@ -14,5 +14,5 @@ Scénario: Avoir un autre message valide
     Alors je dois voir s'afficher "BONJOUR LE MONDE"
 
 Scénario: Avoir un message non valide
-    Etant donné que j'ai un nouveau message "17"
+    Etant donné que j'ai un nauvais message "17"
     Alors je dois avoir une exception "TypeError"
