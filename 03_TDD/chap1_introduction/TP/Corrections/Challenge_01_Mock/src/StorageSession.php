@@ -37,6 +37,12 @@ class StorageSession implements Storable
         $_SESSION['storage'] = [];
     }
 
+    public function restoreQuantity(string $name, float $quantity): void
+    {
+        if (array_key_exists($name, $_SESSION['storage']) === true)
+            $_SESSION['storage'][$name] = $quantity;
+    }
+
     public function getStorage(): array
     {
         return $_SESSION['storage'];

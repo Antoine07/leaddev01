@@ -2,37 +2,43 @@
 
 namespace Cart;
 
-class StorageArray implements Storable{
+class StorageArray implements Storable
+{
 
     private array $storage = [];
 
-    public function setValue(string $name, float $price):void{
+    public function setValue(string $name, float $price): void
+    {
 
-        if(array_key_exists($name, $this->storage) === true){
+        if (array_key_exists($name, $this->storage) === true) {
             $this->storage[$name] += $price;
 
-            return ;
+            return;
         }
 
         $this->storage[$name] = $price;
     }
 
-    public function restore(string $name):void{
-        if(array_key_exists($name, $this->storage) === true)
-            unset( $this->storage[$name] );
+    public function restore(string $name): void
+    {
+        if (array_key_exists($name, $this->storage) === true)
+            unset($this->storage[$name]);
     }
 
-    public function reset():void{
+    public function reset(): void
+    {
         $this->storage = [];
     }
 
-    // TODO refactoring responsability ?
-    public function total():float{
+    public function restoreQuantity(string $name, float $quantity): void
+    {
 
-        return array_sum($this->storage);
+        if (array_key_exists($name, $this->storage) === true)
+            $this->storage[$name] = $quantity;
     }
 
-    public function getStorage():array{
+    public function getStorage(): array
+    {
 
         return $this->storage;
     }
