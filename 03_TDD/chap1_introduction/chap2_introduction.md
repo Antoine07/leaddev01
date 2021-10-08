@@ -135,6 +135,18 @@ class DataTest extends TestCase
 }
 ```
 
+Un provider peut également être basé sur un générateur :
+
+```php
+ public function additionProviderYield()
+{
+    yield [0, 0, 0];
+    yield [0, 1, 1];
+    yield [1, 0, 1];
+    yield [1, 1, 2];
+}
+```
+
 Vous pouvez également tester les exceptions, et même le type d'exception que votre code métier retourne :
 
 ```php

@@ -1,124 +1,96 @@
-# Mock
+# Mock ou doublure
 
-Nous avons vu comment Mocker une classe en implémentant la logique métier dans une classe. Phpunit propose la création de Mock de manière automatique.
+Un Mock est une **doublure**, c'est un objet créé à partir d'une classe dont vous connaissez le fonctionnent.
 
-```php
-class Model
-{
-    public function all():array
-    {
-        // Do something. with DB
-    }
+Vous utiliserez cette technique pour tester l'algorithmique d'une classe qui consomme un autre objet que l'on ne teste pas soit parce qu'il n'est plus à tester, soit parce que vous tester le comportement d'une classe donnée. Les tests doivent être le plus possible Single Responsability. Vous devez uniquement tester le comportement d'une classe donnée, une classe possède des responsabilités limités et bien définies, principe SOLID, Single Responsability, donc tester uniquement ses responsabilités.
 
-    // ...
-}
+## Un peu de vocabulaire.
 
-```
-
-Dans votre classe de tests vous allez écrire :
+- Un **dummy** est un objet qui remplit un contrat sans autre précision.
 
 ```php
-use PHPUnit\Framework\TestCase;
-
-class ModelTest extends TestCase
-{
-    public function testStub()
-    {
-        // Créer un bouchon pour la classe SomeClass.
-        $stub = $this->createMock(Model::class);
-
-        // Configurer le bouchon.
-        $stub->method('all')
-             ->willReturn(['phpunit','behat']);
-.
-        $this->assertContains('phpunit', $stub->all());
-    }
-}
+$mockStorage = $this->createMock(Storable::class);
 ```
 
-Le retour des méthodes peut être plus complexe :
-
-- returnValue()
-
-- returnArgument()
+- Un **stub** est un **dummy** auquel on a défini un comportement pour certaine(s) méthode(s) et indiquez ce que cette méthode doit retourner.
 
 ```php
-->will($this->returnArgument(0)); // $stub->all('foo'); $stub->all('bar')
+$mockStorage = $this->createMock(Storable::class);
+$mockStorage->method('getStorage')->willReturn(['apple' => round(10 * 1.5 * 1.2, 2)]);
 ```
 
-- returnCallback()
+Et **Stub** peut également retourner un dummy. Imaginons que la méthode getValue retourne un objet de type Product :
 
 ```php
-->will($this->returnCallback('str_rot13'));
+$product = $this->createMock(Product::class);
+$mockStorage->method('getValue')->willReturn($product);
 ```
 
-- will
+- Un mock est une doublure qui définit ses comportements ou attentes en anglais. Ainsi chaque méthode du Mock possède un comportement spécifique ou définit :
+
 ```php
-->will($this->onConsecutiveCalls(2, 3, 5, 7));
+$mockStorage->expects($this->once())->method('setValue')->with($apple->getName(), abs(1.5 * 10 * 1.2));
 ```
 
-La méthode will avec une exception peut également être utilisée :
+- **Mock** définition :
 
-- will
+**La pratique consistant à remplacer un objet avec une doublure de test qui vérifie des attentes, par exemple en faisant l’assertion qu’une méthode a été appelée, est appelée mock.**
+
+## Utiliser une doublure dans les tests 
+
+Vous pouvez par exemple tester que le Mock renvoi bien l'objet Mock lui-même de la manière suivante :
+
 ```php
-$this->throwException(new Exception));
+// Créer un bouchon pour la classe de type Storable (interface).
+$mockStorage = $this->createMock(Storable::class);
+
+// Configurer le bouchon la méthode get retournera l'objet $mockStorage lui-même
+$mockStorage->method('get')
+        ->will($this->returnSelf());
+
+$this->assertSame($mockStorage, $mockStorage->get());
 ```
 
-Des extensions comme ci-dessous vous permet de Mocker un flux qui ne consommera aucune ressource (voir dans la documentation).
-
-```text
-mikey179/vfsStream
-```
-
-Vous permettrons de tester les flux comme les fichiers et donc vous n'avez techniquement pas besoin des fichiers eux-mêmes, aucun flux n'est ouvert et du reste il est donc inutile à chercher à le fermer ... 
-
-
-### Exemple
+Un Mock peut également lever une exception que l'on pourra par la suite tester.
 
 ```php
 use PHPUnit\Framework\TestCase;
 
-class Example
+class CartTest extends TestCase
 {
-    protected $id;
-    protected $directory;
+    public function testException(){
+        // stub si on définit uniquement un comportement
+        $stub = $this->createMock(Storable::class);
 
-    public function __construct($id)
-    {
-        $this->id = $id;
-    }
+        $stub->method('getStorage')
+             ->will($this->throwException(new \InvalidArgumentException));
 
-    public function setDirectory($directory)
-    {
-        $this->directory = $directory . DIRECTORY_SEPARATOR . $this->id;
-
-        if (!file_exists($this->directory)) {
-            mkdir($this->directory, 0700, true);
-        }
+        $stub->getStorage();
+        $this->expectException(InvalidArgumentException::class);
     }
 }
 ```
 
-- En utilisant le composant 
+## Utilisation d'un Mock 
+
+Le storage ci-dessous est un Mock au sens où l'on attent un comportement spécifique que l'on a définit dans le Mock et que l'on teste lors de l'appel d'une méthode buy dans la classe Cart qui consomme cet objet.
 
 ```php
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+class CartTest extends TestCase
 {
-    public function setUp()
+    public function testCallResetWhenBuyMethodStorage()
     {
-        vfsStreamWrapper::register();
-        vfsStreamWrapper::setRoot(new vfsStreamDirectory('exampleDir'));
-    }
+        $apple = new Product('apple', 1.5);
+        $mockStorage = $this->createMock(Storable::class);
+        $cart =  new Cart($mockStorage);
+        $mockStorage
+             ->expects($this->once())
+             ->method('setValue')
+             ->with($apple->getName(), abs(1.5 * 10 * 1.2));
 
-    public function testDirectoryIsCreated()
-    {
-        $example = new Example('id');
-        $this->assertFalse(vfsStreamWrapper::getRoot()->hasChild('id'));
-
-        $example->setDirectory(vfsStream::url('exampleDir'));
-        $this->assertTrue(vfsStreamWrapper::getRoot()->hasChild('id'));
+        $cart->buy($apple, 10);
     }
 }
 ```
