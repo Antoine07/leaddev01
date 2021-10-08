@@ -2,7 +2,7 @@
 
 Un Mock est une **doublure**, c'est un objet créé à partir d'une classe dont vous connaissez le fonctionnent.
 
-Vous utiliserez cette technique pour tester l'algorithmique d'une classe qui consomme un autre objet que l'on ne teste pas soit parce qu'il n'est plus à tester, soit parce que vous tester le comportement d'une classe donnée. Les tests doivent être le plus possible Single Responsability. Vous devez uniquement tester le comportement d'une classe donnée, une classe possède des responsabilités limités et bien définies, principe SOLID, Single Responsability, donc tester uniquement ses responsabilités.
+Vous utiliserez cette technique pour tester l'algorithmique d'une classe qui consomme un autre objet que l'on ne teste pas soit parce qu'il n'est plus à tester, soit parce que vous tester le comportement d'une classe donnée. Les tests doivent être le plus possible Single Responsability. Vous devez uniquement tester le comportement d'une classe donnée, une classe possède des responsabilités limités et bien définies, principe SOLID, Single Responsability.
 
 ## Un peu de vocabulaire.
 
