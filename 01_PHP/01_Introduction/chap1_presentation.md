@@ -8,6 +8,8 @@ La première chose que PHP fait c'est de parser le code (analyse de la syntaxe),
 
 PHP compile le code si aucune erreur n'est levée, dans un code intermédiaire que l'on appelle l'opcodes.
 
+
+
 L'opcode sera alors exécuté par la machine virtuelle de PHP pour produire un résultat.
 
 Def du machine virtuelle, c'est un logiciel qui exécute des instructions produisant des résultats identiques quelque soit la plat forme matériel sous-jacente. L'opcode exécuté par cette machine virtuel produira sous Windows ou Linux, par exemple, des résultats identiques.
