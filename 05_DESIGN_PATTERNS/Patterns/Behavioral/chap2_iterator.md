@@ -95,7 +95,7 @@ Fonctionnement du générateur :
 
 Soient deux fichiers txt populations.txt et relationships.txt. En vous aidant des itérateurs et éventuellement un générateur.
 
-Utilisez pour construire la classe ReadFile les fonctions fopen et fgets ainsi que fclose.
+Utilisez pour construire la classe ReadFile (Iterateur) les fonctions fopen et fgets ainsi que fclose.
 
 Respectez la structure de fichiers et dossiers suivantes :
 
