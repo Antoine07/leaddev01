@@ -119,8 +119,8 @@ Remarques :
 ```php
 $storage = new Ds\Map();
 // dans l'objet Person on mettra ses relations
-$person = new Person(name: "Alan", id: 0);
-$storage->put(1, $person);
+$person = new Person(name: "Alan");
+$storage->put(0, $person); // clé/valeur
 ```
 
 ```bash
