@@ -77,7 +77,9 @@ Soient les classes Cart, Product et les observeurs LogFile et LogSum. La classe 
 
 Remarque : pour la classe Cart utilisez un tableau PHP comme storage, nous utiliserons ici une version plus simple de cette classe que nous avons déjà vue. Voyez dans la partie annexe pour le code de la classe Cart et son Storage.
 
-A chaque fois que vous ajoutez un produit dans le panier, notifiez le total des prix à ses observeurs. Mettez à jour votre observation lorsqu'un produit disparait également de votre storage.
+### tests Observable
+
+**L'objectif des tests pour voir si vous avez bien implémenter l'Observable sera : à chaque fois que vous ajoutez un produit dans le panier, de notifiez le total des prix à ses observeurs, mais également lorsque vous retirez un produit de notifier le total pour ses observers.**
 
 L'observeur LogFile enregistrera le nom du produit commandé dans un fichier log.txt. L'observeur LogSum notifiera l'ajout du produit dans une variable.
 
@@ -135,6 +137,9 @@ $cart->detach($logFile);
 ### Annexes
 
 ```php
+<?php
+
+namespace Cart;
 
 class Cart 
 {
