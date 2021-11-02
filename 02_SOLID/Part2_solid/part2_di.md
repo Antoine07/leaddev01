@@ -3,17 +3,17 @@
 Dependancy Injection, rappelons le principe :
 
 - Dependency injection
-*Les objets ne doivent pas créer eux-mêmes les objets dont ils dépendent, on doit les injecter (on crée les instances à l'extérieur de la classe, puis on les "injectent". On ne fait pas de new dans une classe).* 
+*Les objets ne doivent pas créer eux-mêmes les objets dont ils dépendent, on doit les injecter (on crée les instances à l'extérieur de la classe, puis on les "injecte". On ne fait pas de new dans une classe).* 
 
 Techniquement nous pourrions préparer dans le script courant les instances dont nos classes ont besoin, puis appliquer ce principe et injecter nos dépendances classiquement.
 
-Cependant, il est plus intéressant de passer par un Container Services. En effet, ce dernier plus qu'une simple "Factory" vous permettra de préparer ces instances en les configurants pour votre application.
+Cependant, il est plus intéressant de passer par un Container Services. En effet ce dernier, plus qu'une simple "Factory", vous permettra de préparer ces instances en les configurant pour votre application.
 
-Pour découvrir ce principe d'inversion de contrôle nous allons chercher les dépendances que lorsque nous en avons besoin.
+Pour découvrir ce principe d'inversion de contrôle nous allons chercher les dépendances seulement lorsque nous en avons besoin. (Principe d'Hollywood).
 
 ## 01 Exercice DI
 
-En fonction du code suivant essayer d'implémenter un DI (Dependancy Injection)
+En fonction du code suivant essayez d'implémenter un DI (Dependancy Injection)
 
 ```php
 class Container implements \ArrayAccess

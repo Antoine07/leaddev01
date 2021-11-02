@@ -1,5 +1,7 @@
 # QCM
 
+// TODO corriger le QCM en fonction du fichier qcm.md
+
 ## Qestion 01
 
 1. Est-ce que la classe Tools est SOLID ?

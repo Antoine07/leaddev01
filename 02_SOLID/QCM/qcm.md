@@ -10,7 +10,7 @@ Répondez en choisissant une seule et bonne réponse ci-dessous.
 
 [ ] Non
 
-2. Combien de responsabilité pouvons-nous définir à partir de la classe "spaghetti" ci-après ? 
+2. Combien de responsabilités pouvons-nous définir à partir de la classe "spaghetti" ci-après ? 
 
 Répondez en choisissant une seule et bonne réponse ci-dessous.
 
@@ -42,9 +42,9 @@ class Tools{
 
 ## Question 02
 
-A quelle lettre le principe suivant correspont-il ?
+A quelle lettre le principe suivant correspond-il ?
 
-**Une classe doit être fermée aux modifications, on ne casse pas le code existant, mais ouverte aux extensions.**
+**Une classe doit être fermée aux modifications (on ne casse pas le code existant ) mais ouverte aux extensions.**
 
 Répondez en choisissant une seule et bonne réponse ci-dessous.
 
@@ -62,9 +62,9 @@ Répondez en choisissant une seule et bonne réponse ci-dessous.
 
 ## Question 03
 
-A quelle lettre le principe suivant correspont-il ?
+A quelle lettre le principe suivant correspond-il ?
 
-**Vous pouvez également appliquer la règle suivante. Si vous remplacez une classe parente par une classe enfante alors le comportement générale de votre code ne devrait pas en être impactée.**
+**Vous pouvez également appliquer la règle suivante. Si vous remplacez une classe parente par une classe enfante alors le comportement général de votre code ne devrait pas en être impacté.**
 
 Répondez en choisissant une seule et bonne réponse ci-dessous.
 
@@ -80,9 +80,9 @@ Répondez en choisissant une seule et bonne réponse ci-dessous.
 
 ## Question 04
 
-A quelle lettre le principe suivant correspont-il ?
+A quelle lettre le principe suivant correspond-il ?
 
-**Attribuer des responsabilités limités et uniques et bornés à une classe.**
+**Attribuer des responsabilités limitées, uniques et bornées à une classe.**
 
 Répondez en choisissant une seule et bonne réponse ci-dessous.
 
@@ -98,7 +98,7 @@ Répondez en choisissant une seule et bonne réponse ci-dessous.
 
 ## Question 05
 
-A quelle lettre le principe suivant correspont-il ?
+A quelle lettre le principe suivant correspond-il ?
 
 **Un objet A ne doit par "consommer" directement un objet B, il doit consommer son interface.**
 
@@ -117,9 +117,9 @@ Répondez en choisissant une seule et bonne réponse ci-dessous.
 
 ## Question 06
 
-A quelle lettre le principe suivant correspont-il ?
+A quelle lettre le principe suivant correspond-il ?
 
-**Les objets ne doivent pas créer eux-mêmes les objets dont ils dépendent, on doit les injecter (on crée les instances à l'extérieur de la classe, puis on les "injectent". On ne fait pas de new dans une classe).**
+**Les classes ne doivent pas créer elles-mêmes les objets dont elles dépendent, on doit les injecter (on crée les instances à l'extérieur de la classe, puis on les "injecte"; on ne fait pas de new dans une classe.)**
 
 Répondez en choisissant une seule et bonne réponse ci-dessous.
 
@@ -214,7 +214,7 @@ class Cart{
 
 ## Question 09
 
-L'héritage définit quel degré de relation entre deux classes A parente et B enfante ?
+Quel degré de relation entre la classe A parente et la classe B enfante l'héritage définit-il ?
 
 Répondez en choisissant une seule et bonne réponse ci-dessous.
 
@@ -228,7 +228,7 @@ Répondez en choisissant une seule et bonne réponse ci-dessous.
 
 ## Question 10
 
-Qu'impose le mot clé final dans l'héritage ?
+Qu'impose le mot-clé final pour une classe dans un arbre d'héritage ?
 
 Répondez en choisissant une seule et bonne réponse ci-dessous.
 

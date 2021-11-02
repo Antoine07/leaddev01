@@ -1,14 +1,14 @@
 # Introduction
 
-Ce chapitre introduit la notion de relation entre les classes. Dans un prochain chapître nous aborderons **SOLID** (Single Responsability, Open/Closed, Liskov substitution, Interface segregation, Dependancy injection).
+Ce chapitre introduit la notion de relation entre les classes. Dans un prochain chapitre nous aborderons **SOLID** (Single Responsability, Open/Closed, Liskov substitution, Interface segregation, Dependancy injection).
 
-Les relations entre les classes sont importantes à maîtriser pour comprendre SOLID & **design patterns**. Ils permettent également d'implémenter un code modulable évolutif et testable.
+Les relations entre les classes sont importantes à maîtriser pour comprendre SOLID & les **design patterns**. Ils permettent également d'implémenter un code modulable évolutif et testable.
 
-Nous verrons que dans les relations de classe ils existent des couplages plus ou moins forts.
+Nous verrons que dans les relations de classe il existe des couplages plus ou moins forts.
 
 ## L'héritage (couplage fort)
 
-Il définit un couplage fort. En effet lorsqu'une classe hérite d'une autre classe, cette classe a besoin de sa classe mère pour "exister".
+Il définit un couplage fort. En effet, lorsqu'une classe hérite d'une autre classe, cette classe a besoin de sa classe mère pour "exister" (pour être instanciée).
 
 L’héritage permet de "partager", dans une certaine mesure, un ensemble de méthodes et d’attributs depuis une classe mère avec ses classes filles.
 
@@ -21,8 +21,6 @@ Notons que l’héritage multiple n’existe pas en PHP, vous ne pouvez hériter
 Pour faire de l’héritage vous devez appliquer le principe suivant : **une classe étendue doit être une sorte de ou est un.**. Par exemple, si vous avez une classe **Book** qui est étendue de la classe **Product**, vous faites bien de l’héritage, car un livre est un produit ou une sorte de produit.
 
 ![heritage](./images/heritage.png)
-
-\newpage
 
 ```php
 class Product{
@@ -52,8 +50,6 @@ On définit souvent une classe tout en haut de la hiérarchie comme abstraite. D
 Une classe est abstraite lorsque au moins une de ses méthodes est abstraite.
 
 Une classe abstraite ne peut être instanciée. Par contre les classes (non abstraites) qui en dérivent (classes filles) sont instanciables.
-
-\newpage
 
 ### Exemple
 
@@ -85,11 +81,9 @@ class Book extends Product{
 
 ## Le mot clé final
 
-On peut terminer l'arbre d'héritage par le mot clé "final". La classe finale ne pourra avoir de classe fille. Ce mot clé peut également être utilisé pour une méthode, dans ce cas on ne pourra pas la "surcharger" (la re-définir) dans la classe fille.
+On peut terminer l'arbre d'héritage par le mot clé "final". La classe finale ne pourra pas avoir de classe fille. Ce mot clé peut également être utilisé pour une méthode, dans ce cas on ne pourra pas la "surcharger" (la re-définir) dans la classe fille.
 
 Rappelons que l'héritage crée un couplage fort entre les classes. On essayera donc de limiter l'arbre d'héritage à une profondeur égale à 3.
-
-\newpage
 
 ```php
 abstract class Product{
@@ -123,7 +117,7 @@ final class Science extends Book{
 
 ## Exercice Park de Vehicules
 
-Interprétez le diagramme de classe suivant, on vous rappel les symboles utilisés dans ce dernier :
+Interprétez le diagramme de classe suivant, on vous rappelle les symboles utilisés dans ce dernier :
 
 ```text
 - private
@@ -134,8 +128,6 @@ Flèche pointillée : héritage classe abstraite
 ```
 
 ![park](images/park.png)
-
-\newpage
 
 Voici un cas d'utilisation des classes métiers à implémenter :
 
@@ -176,8 +168,6 @@ echo $plane . "\n";
 
 C'est une relation entre des classes qui est soit ponctuelle, soit permanente. Elle met en relation des méthodes de classe et pas la classe entière.
 
-\newpage
-
 ### Association permanente
 
 Dès l'instanciation de la classe RaspberryPi l'objet de type Log est nécessaire :
@@ -200,15 +190,13 @@ class Log{
 }
 ```
 
-### Exercice News (association permanente)
+### Exercice ManageNews (association permanente)
 
 Soient les classes Log et ManageNews. A chaque fois que l'on crée un objet de type ManageNews la méthode statique addLog de la classe Log notifie sa date de création (format d/m/y h:m:s) dans un tableau. 
 
 Utilisez le diagramme suivant pour implémenter les classes :
 
 ![News](./images/news.png "News")
-
-\newpage
 
 ```php
 spl_autoload_register(function ($class) {
@@ -224,7 +212,7 @@ $n5 = new ManageNews(new Log, "Article Python");
 var_dump(Log::getStorage());
 ```
 
-### Association ponctuel
+### Association ponctuelle
 
 Dans ce cas une méthode de la classe est dépendante d'une autre classe, mais de manière ponctuelle :
 
@@ -272,11 +260,9 @@ class Connector{
 }
 ```
 
-\newpage
-
 ## Agrégation
 
-Une agrégation est une association particulière, elle possède des getter et setter pour agréger l'objet à une classe. Dans cette relation, moins fortes que l'héritage ou la composition (que nous allons voir). La dépendance entre les classes est réalisée si on le souhaite, **principe d'inversion de contrôle**.
+Une agrégation est une association particulière, elle possède des getter et setter pour agréger l'objet à une classe. Cette relation est moins forte que l'héritage ou la composition (que nous allons voir). La dépendance entre les classes est réalisée si on le souhaite, **principe d'inversion de contrôle**.
 
 ```php
 
@@ -312,14 +298,11 @@ $raspberry->setSd(new Sd);
 echo $raspberry;
 ```
 
-\newpage
-
 ### Exercice Circle & Color
 
 Soient la classe Circle et la classe Color. Un cercle possède une couleur (agrégation). En utilisant le diagramme de classe suivant créez un cercle rouge puis, un cercle bleu.
 
 ![circle](images/circle.png)
-
 
 ```php
 spl_autoload_register(function ($class) {
@@ -336,8 +319,6 @@ echo $circle->getColor()->getName() . "\n";
 $circle->setColor($blue);
 echo $circle->getColor()->getName() . "\n";
 ```
-
-\newpage
 
 ## Composition
 
@@ -360,15 +341,14 @@ class Arm{
 ### Exercice composition
 
 1. Soient la classe Square et la classe Point. Créez un carré en définissant 4 points (0,0), (0,1), (1, 1), (0, 1) dans un repère à deux dimensions. Implémentez le code en suivant le diagramme suivant, la flèche pleine  relie la classe Point à Square. 
-Un carré est composé de 4 points (objet de type Point) exactement.
 
-2. La fonction area donnera l'air du carré. 
+*Un carré est composé de 4 points (objet de type Point) exactement.*
+
+2. La méthode area donnera l'aire du carré. 
 *Calculez la longueur d'un côté : AB.*
 
-![park](images/square.png)
-
-\newpage        
-
+![square](images/square.png)
+        
 ```php
 spl_autoload_register(function ($class) {
     include __DIR__ . '/' . $class . '.php';
@@ -384,11 +364,9 @@ $square = new Square($A, $B, $C, $D);
 echo $square->area(); // 1 m2
 ```
 
-\newpage
-
 ## Implémentation
 
-Cette relation forte existe entre une classe et une interface. Elle définie un **contrat** pour une classe donnée. La classe qui implémente l'interface doit définir ses méthodes.
+Cette relation forte existe entre une classe et une interface. Elle définit un **contrat** pour une classe donnée. La classe qui implémente l'interface doit définir ses méthodes.
 Une interface doit être définie en utilisant le principe suivant : "à la capacité de" ou "Permet de". 
 
 Une interface n'est pas instanciable. 
@@ -405,11 +383,11 @@ Chaque méthode d'une interface est publique :
 
 Analysez le code qui suit puis répondez aux questions suivantes :
 
-1. Peut on instancier une interface ?
+1. Peut-on instancier une interface ?
 
 2. Peut-on oublier certains paramètres des fonctions du contrat (comme price) lors de la définition de cette méthode dans la classe ?
 
-3. La méthode add de la classe Shoop type son paramètre. Qu'est ce que cela permet de faire de manière générale ?
+3. La méthode add de la classe Shop type son paramètre. Qu'est ce que cela permet de faire de manière générale ?
 
 ```php
 interface Productable{
@@ -431,7 +409,7 @@ class Book implements Productable{
     }
 }
 
-class Shoop {
+class Shop {
     private $products = [];
 
     public function add( Productable $product ){
@@ -464,7 +442,7 @@ $shoop->products();
 
 ## Exercice Parking (synthèse)
 
-Créez un dossier Parking avec l'architecture de dossiers et fichiers suivante. vous pouvez utiliser les classes Vehicule, Car et Plane de l'exercice Park précédent. Définissez un namespace Park de haut niveau (composer.json) :
+Créez un dossier Parking avec l'architecture de dossiers et fichiers suivante. Vous pouvez utiliser les classes Vehicule, Car et Plane de l'exercice Park précédent. Définissez un namespace Park de haut niveau (composer.json) :
 
 ```txt
 Parking/
@@ -472,7 +450,7 @@ Parking/
         Vehicule.php
         Car.php
         Plane.php
-        Byke.php
+        Bike.php
         Parkable.php
     app.php
     composer.json
@@ -482,9 +460,7 @@ Vous suivrez le diagramme de classes suivant pour vous aidez à implémenter les
 
 ![diagramme](images/parking.png)
 
-\newpage
-
-1. Créez les classes **Byke**, **Car** et **Vehicule** puis, créez la classe **Parking**. Un objet de type "Byke" ou "Car" peut se garer dans un parking (objet de type Parking). Ces deux classes sont également de type Vehicule (héritage).
+1. Créez les classes **Bike**, **Car** et **Vehicule** puis, créez la classe **Parking**. Un objet de type "Bike" ou "Car" peut se garer dans un parking (objet de type Parking). Ces deux classes sont également de type Vehicule (héritage).
 
 Définissez maintenant l'interface **Parkable** :
 
@@ -498,22 +474,22 @@ La classe Parking possèdera les méthodes suivantes :
 - removePark : cette méthode permettra de "sortir" un Objet Parkable
 - count : compte le nombre de mobile(s) garé(s)
 
-*Vous pouvez si vous le souhaitez utiliser la classe SplObjectStorage (clé/valeur) pour enregistrer les mobiles dans le parking.*
+*Vous pouvez si vous le souhaitez utiliser la classe SplObjectStorage (clé/valeur) pour enregistrer les objets dans le parking.*
 
-Faites en sorte que seules les classes Byke et Car peuvent se garer dans un Parking :
+Faites en sorte que seules les classes Bike et Car puissent se garer dans un Parking :
 
 ```php
 require __DIR__ . '/vendor/autoload.php';
 
 use Park\Car;
 use Park\Plane;
-use Park\Byke;
+use Park\Bike;
 use Park\Parking;
 
 Car::setSpeed(180);
 Plane::setSpeed(890.5);
 
-$brompton = new Byke('brompton');
+$brompton = new Bike('brompton');
 $kia = new Car('kia');
 
 $airbus = new Plane('airbus 320');
@@ -542,6 +518,6 @@ echo $parking . "\n";
 
 ```
 
-5. Implémentez une méthode getAll ou __toString dans la classe Parking. Cette méthode affichera le détail des mobiles qui sont garés dans un parking.
+5. Implémentez une méthode getAll ou __toString dans la classe Parking. Cette méthode affichera le détail des objets qui sont garés dans un parking.
 
 
