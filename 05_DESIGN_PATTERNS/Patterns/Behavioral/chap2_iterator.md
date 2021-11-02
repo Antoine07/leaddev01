@@ -23,6 +23,14 @@ foreach( $temperatures as $line ){
 }
 ```
 
+En utilisant la méthode eof pour repérer la fin du fichier on peut itérer sur fichier pour lire son contenu ligne par ligne sans consommer beaucoup de mémoire.
+
+```php
+while (!$file->eof()) {
+    $line  =  $file->fgets();
+}
+```
+
 ## Générateur d'utilisateur
 
 Supposons que nous souhaitions configurer et traiter un ensemble de 10000 objets de type **User**, une première solution, peu optimale, serait de créer un tableau dans lequel on les placerait :
@@ -55,9 +63,9 @@ Mais on peut également créer un **générateur** qui va les créer dynamiqueme
 ```php
 function generatorUser(){
     $count = 0;
-    while($count < 100){
+    while($count < 10000){
         $count++;
-
+        // préparation des objets en puissance
         yield  new User("name_$count");
     }
 }
@@ -85,7 +93,7 @@ Fonctionnement du générateur :
 
 ## 01 Exercice population itérateurs/générateurs
 
-Soient deux fichiers txt populations.json et relationships.json. En vous aidant des itérateurs et/ou générateurs.
+Soient deux fichiers txt populations.txt et relationships.txt. En vous aidant des itérateurs et éventuellement un générateur.
 
 Utilisez pour construire la classe ReadFile les fonctions fopen et fgets ainsi que fclose.
 
@@ -93,15 +101,62 @@ Respectez la structure de fichiers et dossiers suivantes :
 
 <img src="images/relationships.png" width="150"  />
 
-1. Créez un objet qui permet d'hydrater les données que vous allez traiter.
+1. Créez un objet Population qui permet d'hydrater les données que vous allez traiter.
 
-2. Modifiez la liste populations ou la structure de l'objet, pour ajouter une clé relation de type array.
+2. Modifiez l'objet Population pour ajouter une clé relation de type array.
 
-3. Ajoutez les relations (liste relationships) de chaque user de cette population. Puis placez les relations de chaque user dans la liste populations en utilisant relationships.
+3. Ajoutez les relations (liste relationships) de chaque personne de cette population. Puis placez les relations de chaque personne dans la liste populations en utilisant relationships.
 
 4. Calculer la moyenne des relations.
 
 
-Remarques : utilisez les bonnes structures pour traiter les données.
+Remarque sur la conception d'un itérateur en PHP, il faudra dans ce cas implémenter l'interface Iterator comme suit :
 
-<img src="images/relationships.png" alt="cart" width="15"/>
+
+```php
+class myIterator implements Iterator {
+    private $position = 0;
+    private $array = [
+        "premierelement",
+        "secondelement",
+        "dernierelement",
+    ];  
+
+    public function __construct() {
+        $this->position = 0;
+    }
+
+    public function rewind() {
+        $this->position = 0;
+    }
+
+    public function current() {
+        return $this->array[$this->position];
+    }
+
+    public function key() {
+        return $this->position;
+    }
+
+    public function next() {
+        ++$this->position;
+    }
+
+    public function valid() {
+        return isset($this->array[$this->position]);
+    }
+}
+
+$it = new myIterator;
+
+foreach($it as $key => $value) {
+    var_dump($key, $value);
+    echo "\n";
+}
+
+```
+
+
+
+
+
