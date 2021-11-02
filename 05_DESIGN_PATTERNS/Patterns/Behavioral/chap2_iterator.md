@@ -63,9 +63,9 @@ Mais on peut également créer un **générateur** qui va les créer dynamiqueme
 ```php
 function generatorUser(){
     $count = 0;
-    while($count < 100){
+    while($count < 10000){
         $count++;
-
+        // préparation des objets en puissance
         yield  new User("name_$count");
     }
 }
