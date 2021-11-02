@@ -77,7 +77,7 @@ Soient les classes Cart, Product et les observeurs LogFile et LogSum. La classe 
 
 Remarque : pour la classe Cart utilisez un tableau PHP comme storage, nous utiliserons ici une version plus simple de cette classe que nous avons déjà vue. Voyez dans la partie annexe pour le code de la classe Cart et son Storage.
 
-A chaque fois que vous ajoutez un produit dans le panier, notifiez le total des prix à ses observeurs.
+A chaque fois que vous ajoutez un produit dans le panier, notifiez le total des prix à ses observeurs. Mettez à jour votre observation lorsqu'un produit disparait également de votre storage.
 
 L'observeur LogFile enregistrera le nom du produit commandé dans un fichier log.txt. L'observeur LogSum notifiera l'ajout du produit dans une variable.
 
@@ -126,6 +126,8 @@ $logSum = new LogSum;
 
 // detach Observer
 $cart->detach($logSum);
+$cart->detach($logFile);
+
 
 // recommandez des produits et vérifiez qu'ils ne sont pas de LogSum
 ```
@@ -169,5 +171,85 @@ class Cart
         }
     }
 
+}
+```
+
+- Product
+
+```php
+<?php
+
+namespace Cart;
+
+class Product{
+
+    /**
+     * name
+     *
+     * @var string
+     */
+    private $name;
+
+    /**
+     * price
+     *
+     * @var float
+     */
+    private $price;
+
+    public function __construct($name, $price)
+    {
+        $this->setName($name);
+        $this->setPrice($price);
+        
+    }
+
+    /**
+     * Get name
+     *
+     * @return  string
+     */ 
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
+     *
+     * @param  string  $name  name
+     *
+     * @return  self
+     */ 
+    public function setName(string $name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return  float
+     */ 
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set price
+     *
+     * @param  float  $price  price
+     *
+     * @return  self
+     */ 
+    public function setPrice(float $price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
 }
 ```
