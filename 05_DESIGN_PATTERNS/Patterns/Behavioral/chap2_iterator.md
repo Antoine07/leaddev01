@@ -112,4 +112,55 @@ Respectez la structure de fichiers et dossiers suivantes :
 
 Remarques : utilisez les bonnes structures pour traiter les données.
 
-<img src="images/relationships.png" alt="cart" width="15"/>
+<img src="images/relationships.png" alt="cart" width="150"/>
+
+Remarque sur la conception d'un itérateur en PHP, il faudra dans ce cas implémenter l'interface Iterator comme suit :
+
+
+```php
+class myIterator implements Iterator {
+    private $position = 0;
+    private $array = [
+        "premierelement",
+        "secondelement",
+        "dernierelement",
+    ];  
+
+    public function __construct() {
+        $this->position = 0;
+    }
+
+    public function rewind() {
+        $this->position = 0;
+    }
+
+    public function current() {
+        return $this->array[$this->position];
+    }
+
+    public function key() {
+        return $this->position;
+    }
+
+    public function next() {
+        ++$this->position;
+    }
+
+    public function valid() {
+        return isset($this->array[$this->position]);
+    }
+}
+
+$it = new myIterator;
+
+foreach($it as $key => $value) {
+    var_dump($key, $value);
+    echo "\n";
+}
+
+```
+
+
+
+
+
