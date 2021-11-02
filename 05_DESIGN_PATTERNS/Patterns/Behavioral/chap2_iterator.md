@@ -101,16 +101,33 @@ Respectez la structure de fichiers et dossiers suivantes :
 
 <img src="images/relationships.png" width="150"  />
 
-1. Créez un objet Population qui permet d'hydrater les données que vous allez traiter.
+1. Créez un objet Person qui permet d'hydrater les données que vous allez traiter.
 
-2. Modifiez l'objet Population pour ajouter une clé relation de type array.
+2. Modifiez l'objet Person pour ajouter une clé relation de type array.
 
 3. Ajoutez les relations (liste relationships) de chaque personne de cette population. Puis placez les relations de chaque personne dans la liste populations en utilisant relationships.
 
 4. Calculer la moyenne des relations.
 
 
-Remarque sur la conception d'un itérateur en PHP, il faudra dans ce cas implémenter l'interface Iterator comme suit :
+Remarques :
+
+- Vous pouvez utiliser les objets de type Map en PHP, dans ce cas dans le projet :
+
+[Map](https://www.php.net/manual/fr/class.ds-map.php)
+
+```php
+$storage = new Ds\Map();
+// dans l'objet Person on mettra ses relations
+$person = new Person(name: "Alan", id: 0);
+$storage->put(1, $person);
+```
+
+```bash
+composer require php-ds/php-ds
+```
+
+- sur la conception d'un itérateur en PHP, il faudra dans ce cas implémenter l'interface Iterator comme suit :
 
 
 ```php
