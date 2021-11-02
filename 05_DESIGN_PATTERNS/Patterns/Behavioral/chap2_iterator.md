@@ -23,7 +23,7 @@ foreach( $temperatures as $line ){
 }
 ```
 
-En utilisant la méthode oef pour repérer la fin du fichier on peut itérer sur fichier pour lire son contenu ligne par ligne sans consommer beaucoup de mémoire.
+En utilisant la méthode eof pour repérer la fin du fichier on peut itérer sur fichier pour lire son contenu ligne par ligne sans consommer beaucoup de mémoire.
 
 ```php
 while (!$file->eof()) {
