@@ -23,6 +23,14 @@ foreach( $temperatures as $line ){
 }
 ```
 
+En utilisant la méthode oef pour repérer la fin du fichier on peut itérer sur fichier pour lire son contenu ligne par ligne sans consommer beaucoup de mémoire.
+
+```php
+while (!$file->eof()) {
+    $line  =  $file->fgets();
+}
+```
+
 ## Générateur d'utilisateur
 
 Supposons que nous souhaitions configurer et traiter un ensemble de 10000 objets de type **User**, une première solution, peu optimale, serait de créer un tableau dans lequel on les placerait :
