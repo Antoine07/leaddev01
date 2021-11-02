@@ -37,7 +37,7 @@ Vous pouvez également définir des classes anonymes ou plus exactement des obje
 $obj = new Class{};
 ```
 
-Depuis la version 8 de PHP vous pouvez définir des attributs de vos classes de manière très synthétique comme suit, passage en paramètre du constructeur :
+Depuis la version 8 de PHP vous pouvez définir des attributs de vos classes de manière très synthétique comme suit, passage en paramètres du constructeur :
 
 ```php
 $product = new class(1.2, "apple", 10)
@@ -61,7 +61,7 @@ $products = ['milk' => 3.5, 'butter' => 2.5, 'eggs' => 0.5 ];
 total($tax = .2, $products);
 ```
 
-2. Appliquez maintenant les quantités respectives suivantes au calcul TTC
+2. Appliquez maintenant les quantités respectives suivantes au calcul TTC.
 
 ```php
 $quantities = [3, 2, 10];

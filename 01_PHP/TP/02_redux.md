@@ -1,10 +1,11 @@
 # Redux en PHP
 
-Vous allez mettre en place le pattern Redux en PHP. Vous utiliserez au maximum la syntaxe PHP 8 pour implémenter le code. Nous vous rappelons le pattern du Flux que Facebook utilise dans React.
+Vous allez mettre en place le design pattern Redux. Vous utiliserez la syntaxe PHP 8 pour l'implémentation du code.
 
-Vous implémenterez l'incrémentation et la décrémentation d'un counter. Voici votre initialState :
+Créez l'incrémentation et la décrémentation d'un counter.
 
 ```php
+// source de vérité
 $initialState = [
     'count' => 0
 ];
@@ -18,7 +19,7 @@ const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
 ```
 
-Vous testetez alors son fonctionnement comme suit :
+Vous testerez alors son fonctionnement comme suit :
 
 ```php
 
@@ -40,7 +41,7 @@ $store->dispatch(new Action(type : "INCREMENT", action : ['number' => 1] )); // 
 
 ## Design pattern Flux
 
-Le Flux est un design pattern qui détermine un ordre de gestion des données. Il impose un ordre dans lequel la mise à jour des données doit s'effectuer. Le flux met de la prévisibilité via ce que l'on appelle un data flow strictement unidirectionnel. Pour ceux qui connaissent React cela permet de rendre l'application prévisible en fonction du flux des données qui hydrate l'application.
+*Le Flux est un design pattern qui détermine un ordre de gestion des données. Il impose un ordre dans lequel la mise à jour des données doit s'effectuer. Le flux met de la prévisibilité via ce que l'on appelle un data flow strictement unidirectionnel. Pour ceux qui connaissent React cela permet de rendre l'application prévisible en fonction du flux des données qui hydratent l'application.*
 
 Redux a été créé en partant de ce pattern. Il possède trois concepts appliqués à l'application :
 
@@ -52,15 +53,15 @@ Redux a été créé en partant de ce pattern. Il possède trois concepts appliq
 
 Détaillons le pattern du Flux simplement.
 
-Un state global est une description de l'état des données de l'application de manière globale. Normalement sous forme d'un objet. Ce global state sera pris en charge par le **store**.
+Un **state** global est une description de l'état des données de l'application de manière globale. Normalement sous forme d'un objet. Ce global **state** sera pris en charge par le **store**.
 
-Le global state doit resté dans l'état dans lequel il a été défini. Le même "arbre structurel" avec les mêmes valeurs. Cela permet la relecture des données d'une application d'un point A vers un point B. On peut remonter l'historique des changements en retrouvant l'arbre d'origine ou structure et valeurs initiales.
+Le global **state** doit rester dans l'état dans lequel il a été défini. Le même "arbre structurel" avec les mêmes valeurs. Cela permet la relecture des données d'une application d'un point A vers un point B. On peut remonter l'historique des changements en retrouvant l'arbre d'origine ou structure et valeurs initiales.
 
-Les actions modifierons l'état de l'application. En théorie se sont les **actions creators** qui sont utilisées et qui retournent une action spécifique avec des paramètres éventuels. 
+Les actions modifieront l'état de l'application. En théorie ce sont les **actions creators** qui sont utilisées et qui retournent une action spécifique avec des paramètres éventuels. 
 
-Le reducer reliera les states ou états du state global aux actions. Dans le flux le reducer doit toujours retourner la même structure du global state en fonction d'un type d'action utilisé par le reducer. On utilise pour cela la notion de fonction pure qui pour les mêmes arguments retournent toujours la même valeur et qui n'a pas d'effet de bord, variable mutable dans l'action du reducer.
+Le reducer reliera les **states** ou états du **state** global aux actions. Dans le flux le reducer doit toujours retourner la même structure du global **state** en fonction d'un type d'action utilisée par le reducer. On utilise pour cela la notion de fonction pure qui pour les mêmes arguments retourne toujours la/les même(s) valeur(s) sans effet de bord.
 
-Le state retourné par le reducer est dans l'application en lecture seule.
+Le **state** retourné par le reducer est dans l'application en lecture seule.
 
 Notez que les reducers sont des fonctions pures.
 

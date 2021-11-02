@@ -1,6 +1,6 @@
 # Problème recherche une séquence 
 
-Dans la suite vous pouvez utiliser au maximum les techniques ou fonctions de PHP que vous connaissez.
+Dans la suite vous pouvez utiliser les techniques ou fonctions de PHP que vous connaissez.
 
 Vous travaillerez sur des tableaux de nombres entiers pour rechercher un mot dans le texte.
 
@@ -15,7 +15,7 @@ $seq = [1,2,3]; // mot recherche
 search_pos_word(content : $content, seq : $seq);
 ```
 
-2. Créez maintenant une fonction **search_pos_seq_all** qui trouve toutes les premières occurences des mots recherchés dans un texte. Utilisez la fonction que vous avez implémentée dans le 1. La fonction retournera un objet de type Search possèdant les arguments suivants :
+2. Créez maintenant une fonction **search_pos_seq_all** qui trouve toutes les premières occurences des mots recherchés dans un texte. Utilisez la fonction que vous avez implémentée dans le 1. La fonction retournera un objet de type Search possédant les arguments suivants :
 
 ```php
 class Search

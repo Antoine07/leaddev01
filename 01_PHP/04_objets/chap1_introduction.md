@@ -105,7 +105,6 @@ $operation = [ [11, 2], ["+"] ] ;
 $calculator->result($operation);
 ```
 
-
 ### Principe de l’héritage
 
 Pour faire de l’héritage vous devez appliquer le principe suivant :une classe étendue doit être une sorte de ou est un.
@@ -120,17 +119,17 @@ Si vous n’appliquez pas ce principe vous ne faites pas d’héritage au sens s
 
 ## traits
 
-C'est une méthode pour réutiliser du code en PHP dans le contexte de l'héritage simple. Une classe peut utiliser plusieurs traits.
+C'est une méthode pour réutiliser du code en PHP dans le contexte de l'héritage simple. Une classe peut utiliser plusieurs traits (mixins).
 
 Un trait sert à regrouper des fonctionnalités intéressantes, il ne peut pas être instancié. Il s'ajoute à la notion d'héritage qui autorise la composition horizontale des comportements, ou plus exactement l'utilisation de méthodes sans héritage.
 
 ```php
 trait showHello {
-    function hello() { echo "Hello " ; }
+    public function hello() { echo "Hello " ; }
 }
 
 trait showWorld {
-    function world() { echo " World " ; }
+    public function world() { echo " World " ; }
 }
 
 class View{
@@ -143,14 +142,15 @@ class View{
 
 $o = new View();
 $o->hello();
-$o->word();
+$o->world();
 $o->exclamation();
 // Hello World !
 ```
 
 ### Résolution de conflits
 
-Deux traits identiques dans une même classe lève une erreure fatale. Pour résoudre un conflit entre deux traits il faut utiliser l'opérateur **insteadof**.
+Si deux traits importent deux fonctions identiques dans une classe une exception est levée. 
+Pour résoudre ce conflit entre traits, il faut utiliser l'opérateur **insteadof**.
 
 ```php
 trait A {
@@ -171,6 +171,7 @@ trait B {
     }
 }
 
+// résolution de conflit
 class Talker {
     use A, B {
         B::smallTalk insteadof A;
@@ -181,7 +182,7 @@ class Talker {
 
 ### Changer la visibilité des méthodes 
 
-En utilisant la syntaxe as, vous pouvez aussi ajuster la visibilité de la méthode dans la classe qui l'utilise. Les méthodes privée ne peuvent être modifiées. Une classe peut implémenter plusieurs interfaces.
+En utilisant la syntaxe **as**, vous pouvez aussi ajuster la visibilité des méthodes d'un trait dans une classe. Les méthodes privées ne peuvent être modifiées.
 
 ```php 
 trait HelloWorld {
@@ -198,23 +199,11 @@ class A {
 $b = new A;
 
 echo $b->sayHello();
-
 ```
-
-## Héritage 
-
-L’héritage permet de factoriser un ensemble de méthodes et d’attributs dans une classe mère que des classes filles peuvent partager.
-
-Les classes filles seront spécialisées par rapport à la classe mère. Par exemple une classe Product mère et une classe Stylo fille, la classe Stylo est dite spécialisée par rapport à la classe Product. La classe Stylo possédera plus de spécificités que la classe Product.
-
-La relation de dépendance entre une classe mère et une classe fille est très forte. On parlera de couplage fort. En effet, pour instancier la classe étendue il faut que la classe mère soit définie dans le script courant.
-
-L’héritage multiple n’existe pas en PHP, vous ne pouvez hériter que d’une seule classe à la fois.
-
 
 ## Interface (rappel)
 
-Les interfaces objet vous permettent de définir des méthodes publiques que vos classes devront implémentées.
+Les interfaces objets vous permettent de définir des méthodes publiques que vos classes devront implémenter(programmation par contrat).
 
 ```php
 interface iTemplate
@@ -244,9 +233,9 @@ class Template implements iTemplate
 
 ## TP Yam 
 
-Vous allez créer un petit composant qui permet de lancer 5 dés pour jouer au Yam. Il n'y aura qu'un seul joueur dans l'application et nous testerons que le lancer de 5 dés (en même temps). Nous allons faire des statistiques sur les différentes combinaisons du jeu. Vous ne testerez que certaines combinaisons de Yam.
+Vous allez créer un petit composant qui permet de lancer 5 dés pour jouer au Yam. Il n'y aura qu'un seul joueur dans l'application et nous ne testeront que le lancer de 5 dés (en même temps). Nous allons faire des statistiques sur les différentes combinaisons du jeu. Vous ne retiendrez que certaines combinaisons de Yam.
 
-Pour compter le nombre de combinaisons vous lancerez plusieurs les 5 dés. Par exemple sur 50 tests qui lance 1 fois 5 dés en même temps on a trouvé :
+Pour compter le nombre de combinaisons vous lancerez plusieurs fois les 5 dés. Par exemple sur 50 tests qui lancent 1 fois 5 dés en même temps on pourrait avoir :
 
 - Brelan : 2 (trois dés identiques)
 
@@ -256,13 +245,13 @@ Pour compter le nombre de combinaisons vous lancerez plusieurs les 5 dés. Par e
 
 - Yam : 2 (5 dés identiques)
 
-Créez autant de classe que nécessaire pour implémenter ce composant.
+Créez autant de classe(s) que nécessaire pour implémenter ce composant.
 
 ## TP Queue
 
-Implémentez une Queue en définissant une classe. Voici comment dans le script courant vous devez appeler votre code pour ajouter un élément dans la queue et récupérer le premier élément de la queue.
+Implémentez une **queue** en définissant une classe. Voici comment dans le script courant vous devez appeler votre code pour ajouter un élément dans la **queue** et récupérer son premier élément.
 
-FIFO (firts In first out)
+FIFO (First In First Out)
 
 ```php
 $queue = new Queue();
@@ -273,7 +262,7 @@ $queue->pop(); // affiche 1
 $queue->clear(); // retire tous les éléments de la queue
 ```
 
-Facultatif. Votre Queue peut implémenter l'interface ArrayAccess.
+Facultatif. Vous pouvez utilliser l'interface ArrayAccess de cette classe métier.
 
 ```php
 class Obj implements ArrayAccess {
@@ -322,13 +311,13 @@ print_r($obj);
 
 ## TP Exercice Button & Lamp
 
-Imaginez une lampe dans votre salon. Décomposez celle-ci en deux entités : un Button et une Lamp. Vous ferez également un schéma sur papier pour vous représenter les relations entre ces deux entités (facultatif).
+Imaginez une lampe dans votre salon. Décomposez celle-ci en deux entités : un **Button** et une **Lamp**. Vous ferez également un schéma sur papier pour vous représenter les relations entre ces deux entités.
 
 ```php
 $lamp= new Button(new Lamp);
 ```
 
-Puis implémentez le déclenchement lumière alumé/éteint.
+Puis implémentez le déclenchement de la lampe (allumée/éteinte).
 
 ```php
 echo $lamp->switchDevice(); // turn on
@@ -339,9 +328,9 @@ echo $lamp->switchDevice(); // turn off
 
 ## TP exercices Letter & Console
 
-Créez deux classes Letter et Console. La première classe génère les lettres de l'alphabet et la deuxième affiche le contenu d'un tableau de dimension 1 dans le terminal.
+Créez deux classes **Letter** et **Console**. La première classe génère les lettres de l'alphabet et la deuxième affiche le contenu d'un tableau de dimension 1 dans le terminal.
 
-La méthode generate de la classe Letter génère 10 lettres aléatoirement de l'alphabet et retourne ces lettres dans un tableau. La show affiche en console le résultat.
+La méthode **generate** de la classe **Letter** génère 10 lettres aléatoirement de l'alphabet et retourne ces lettres dans un tableau. La show affiche en console le résultat.
 
 ```php
 $letter = new Letter();
