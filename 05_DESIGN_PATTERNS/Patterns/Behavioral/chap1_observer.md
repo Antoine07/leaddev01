@@ -137,6 +137,9 @@ $cart->detach($logFile);
 ### Annexes
 
 ```php
+<?php
+
+namespace Cart;
 
 class Cart 
 {
