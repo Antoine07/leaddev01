@@ -43,12 +43,20 @@ class EventTest extends TestCase
     }
 
     public function testEventTriggerConnect(){
+
+        // Container de service 
         $this->eventManager->attach('database.user.connect', function(User $user){
             $user->setHistoryCount( $user->getHistoryCount() + 1 );
 
             $user->persist();
         });
 
+
+        // SIMULATION DE LA CONNEXION on compte 1 connexion
+        $user = $this->user->find(1);
+        $this->eventManager->trigger('database.user.connect', $user); // propagation des events
         
+        $userVerif = $this->user->find(1) ;
+        $this->assertEquals($userVerif ->getHistoryCount(), 1);
     }
 }

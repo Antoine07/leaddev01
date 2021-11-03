@@ -5,7 +5,7 @@ class EventManager{
 
     public static array $events = [];
 
-    public static function trigger(string $event, array $argv = []){
+    public static function trigger(string $event, $argv = []){
 
         if(isset(self::$events[$event])){
             foreach(self::$events[$event] as $callback ) $callback($argv);

@@ -47,12 +47,11 @@ class User
 
     public function persist():void{
 
-        $prepare = $this->pdo->prepare('UDPATE users SET history_count = ? WHERE id = ?');
+        $prepare = $this->pdo->prepare('UPDATE users SET history_count = ? WHERE id = ?');
 
         $prepare->bindValue(1, $this->getHistoryCount());
 
         $prepare->bindValue(2, $this->id);
         $prepare->execute();
-        
     }
 }
