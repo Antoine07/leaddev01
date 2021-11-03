@@ -8,7 +8,8 @@ Le composite est soit une branche, soit un composite d'objets d'arboresents.
 
 Par exemple, si vous avez à calculer le prix total de produits. Ces produits peuvent se trouver sous deux formes : un conteneur de produits ou le produit lui-même. Si on a un produit, alors on retournera son prix et si on a un conteneur de produits alors on parcours tous ses produits pour calculer le total des prix et si on tombe, lors du parcours, sur un sous-conteneur, on parcours les produits pour en faire également la somme, ainsi de suite. Le composite permet de s'adapter à une structure d'objets arborescents.
 
-![composite](images/composite.png)
+
+<img src="images/composite.png" width="400" />
 
 - Component
 
