@@ -57,13 +57,11 @@ EventManager::trigger(event: 'database.user.create', ['id' => 1]);
 EventManager::trigger(event: 'database.user.update', ['id' => 1]);
 ```
 
-La PSR (PHP Standard Recommendation) possède deux interfaces pour définir ce pattern dans nos applications. Il est conseillé de les utiliser pour mettre plus de cohérence, de modularité et de testabilité.
-
-Vous trouverez ces deux interfaces dans le dossier Psr et dans la structure minimale proposée pour démarrer l'exercice 08 suivant :
+La PSR (PHP Standard Recommendation) possède des interfaces pour définir EventDispatcher, nous ne les utiliserons pas dans ce contexte pour cet exercice en particulier.
 
 ## 08 Exercice Event
 
-Nous allons mettre ce pattern en place à partir d'une liste d'utilisateurs existants. Nous déclencherons une action lorsque l'un d'entre eux se connectera à notre application : enregistrement dans le champ de la table users **history_count** du nombre total de ses connexions à l'application. Nous ne comptabiliserons pas les déconnexions. Ainsi si un utilisateur s'est connecté et déconnecté 10 fois à la suite, nous aurons dans le champ history_count le son nombre de connexions.
+Nous allons mettre ce pattern (Event Listener) en place à partir d'une liste d'utilisateurs existants. Nous déclencherons une action lorsque l'un d'entre eux se connectera à notre application : enregistrement dans le champ de la table users **history_count** du nombre total de ses connexions à l'application. Nous ne comptabiliserons pas les déconnexions. Ainsi si un utilisateur s'est connecté et déconnecté 10 fois à la suite, nous aurons dans le champ history_count le son nombre de connexions.
 
 Dans la suite nous n'aborderons pas la notion de "StopPropagation" de nos événements.
 
@@ -83,14 +81,6 @@ La classe User est partiellement créée dans le projet.
 
 Créez la méthode persit elle permettra de faire persister l'historique lorsque nous déclencherons les triggers.
 
-### Partie 3 tests généraux
-
-Créez quelques tests pour valider la mise en place du projet.
-
-### Partie 4 EventManager
+### Partie 3 EventManager
 
 Créez un EventManager pour ce projet
-
-### Partie 5 tests EventManager
-
-Testez les connexions et déconnexions et vérifiez l'historique des connexions pour un user donné.
