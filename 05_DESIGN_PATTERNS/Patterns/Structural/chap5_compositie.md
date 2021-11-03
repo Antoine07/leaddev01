@@ -50,6 +50,7 @@ class Composite extends Component
        $this->children->detach($c);
     }
 
+    // cette méthode est purement informative
     public function get(): \SplObjectStorage{
 
         return $this->children;
