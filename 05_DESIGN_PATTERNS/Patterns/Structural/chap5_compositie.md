@@ -4,11 +4,12 @@
 
 Composite est un patron de conception structurel.
 
-Le composite est soit une branche, soit un composite d'objets d'arboresents.
+Le composite est soit une feuille, soit un composite d'objets d'arboresents.
 
-Par exemple, si vous avez à calculer le prix total de produits. Ces produits peuvent se trouver sous deux formes : un conteneur de produits ou le produit lui-même. Si on a un produit, alors on retournera son prix et si on a un conteneur de produits alors on parcours tous ses produits pour calculer le total des prix et si on tombe, lors du parcours, sur un sous-conteneur, on parcours les produits pour en faire également la somme, ainsi de suite. Le composite permet de s'adapter à une structure d'objets arborescents.
+Par exemple, si vous avez à calculer le prix total de produits. Ces produits peuvent se trouver sous deux formes : un conteneur de produits ou le produit lui-même. Si on a un produit (feuille), alors on retournera son prix et si on a un conteneur de produits alors on parcours tous ses produits pour calculer le total des prix, si on re-tombe, lors du parcours, sur un sous-conteneur, on parcours les produits pour en faire également la somme, ainsi de suite... Le composite permet de s'adapter à une structure d'objets arborescents.
 
-![composite](images/composite.png)
+
+<img src="images/composite.png" width="500" />
 
 - Component
 
@@ -36,8 +37,10 @@ class Leaf extends Component
 ```php
 class Composite extends Component
 {
-
-    protected $children = new \SplObjectStorage();
+    
+    public function __construct(){
+        $this->children =  new \SplObjectStorage(); 
+    }
 
     public function add(Component $c): void
     {
@@ -49,6 +52,7 @@ class Composite extends Component
        $this->children->detach($c);
     }
 
+    // cette méthode est purement informative
     public function get(): \SplObjectStorage{
 
         return $this->children;
@@ -105,7 +109,7 @@ $form = new Form(name : 'user', action : "/add");
 $form->add(new Input('name', "Name", 'text'));
 $form->add(new Input('description', "Description", 'text'));
 
-$wrapper = new Wrapper();
+$wrapper = new Wrapper(); // entoure avec un div
 $wrapper->add(new Input('caption', "Caption", 'text'));
 $wrapper->add(new Input('image', "Image", 'file'));
 
