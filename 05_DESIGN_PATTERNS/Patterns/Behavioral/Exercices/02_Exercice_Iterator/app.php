@@ -31,3 +31,16 @@ $avg_relation = round($storage->reduce(function ($acc, $index, $pop) {
 
 echo $avg_relation; 
 echo PHP_EOL;
+
+
+## Exemple de générateur
+
+function personGenerate($populations){
+    foreach ($populations as [$id, $name]) {
+        //  requête fetch pour récupérer les relations $relation
+        //  yield new Person(name: $name, id: (int) $id, relation: $relation);
+        yield new Person(name: $name, id: (int) $id, relation: []);
+    }
+}
+
+foreach(personGenerate($populations) as $user) print_r($user); // __toString
