@@ -37,8 +37,10 @@ class Leaf extends Component
 ```php
 class Composite extends Component
 {
-
-    protected $children = new \SplObjectStorage();
+    
+    public function __construct(){
+        $this->children =  new \SplObjectStorage(); 
+    }
 
     public function add(Component $c): void
     {
