@@ -93,24 +93,21 @@ Fonctionnement du générateur :
 
 ## 01 Exercice population itérateurs/générateurs
 
-Soient deux fichiers txt populations.txt et relationships.txt. En vous aidant des itérateurs et éventuellement un générateur.
+Soient deux fichiers txt populations.txt et relationships.txt. En vous aidant des itérateurs pour parcourir ces fichiers créez la classe ReadIterator. En utilisant les fonctions fopen et fgets ainsi que fclose. 
 
-Utilisez pour construire la classe ReadFile (Iterateur) les fonctions fopen et fgets ainsi que fclose.
+L'objectif est de récupérer dans un storage les relations explicitées dans le fichier relationships.txt des personnes du fichier populations.txt. Par exemple dans le fichier relationships.txt 0,1 indique que la personne 0 est en relation avec la personne 1 et réciproquement.
 
 Respectez la structure de fichiers et dossiers suivantes :
 
 <img src="images/relationships.png" width="150"  />
 
-1. Créez un objet Person qui permet d'hydrater les données que vous allez traiter.
+1. Créez un objet Person elle permettra d'hydrater les données que vous allez traiter dans les deux fichiers. Ajoutez dans cet objet Person un attribut relation (tableau PHP). Vous stockerez ces objets dans un Map PHP, voyez à ce sujet la remarque ci-après.
 
-2. Modifiez l'objet Person pour ajouter une clé relation de type array.
+3. Ajoutez maintenant dans l'objet Person, à l'aide d'un script, les relations (liste relationships) de chaque personne de cette population. 
 
-3. Ajoutez les relations (liste relationships) de chaque personne de cette population. Puis placez les relations de chaque personne dans la liste populations en utilisant relationships.
+4. Calculer la moyenne des relations en parcourant l'ensemble des Persons de votre population.
 
-4. Calculer la moyenne des relations.
-
-
-Remarques :
+Remarque :
 
 - Vous pouvez utiliser les objets de type Map en PHP, dans ce cas dans le projet :
 
