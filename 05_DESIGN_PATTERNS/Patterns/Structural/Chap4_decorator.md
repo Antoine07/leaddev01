@@ -6,7 +6,7 @@ Le décorateur possède le même ensemble de méthodes que la cible et lui dél�
 
 Le diagramme UML de ce pattern est le suivant :
 
-<img src="images/decorator.png" alt="cart" width="200"/>
+<img src="images/decorator.png" alt="cart" width="400"/>
 
 ## 01 Exemple
 
