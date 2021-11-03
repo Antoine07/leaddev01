@@ -41,4 +41,14 @@ class EventTest extends TestCase
 
         $this->assertInstanceOf(EventManager::class, $this->eventManager);
     }
+
+    public function testEventTriggerConnect(){
+        $this->eventManager->attach('database.user.connect', function(User $user){
+            $user->setHistoryCount( $user->getHistoryCount() + 1 );
+
+            $user->persist();
+        });
+
+        
+    }
 }
