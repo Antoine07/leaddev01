@@ -81,14 +81,6 @@ La classe User est partiellement créée dans le projet.
 
 Créez la méthode persit elle permettra de faire persister l'historique lorsque nous déclencherons les triggers.
 
-### Partie 3 tests généraux
-
-Créez quelques tests pour valider la mise en place du projet.
-
-### Partie 4 EventManager
+### Partie 3 EventManager
 
 Créez un EventManager pour ce projet
-
-### Partie 5 tests EventManager
-
-Testez les connexions et déconnexions et vérifiez l'historique des connexions pour un user donné.
