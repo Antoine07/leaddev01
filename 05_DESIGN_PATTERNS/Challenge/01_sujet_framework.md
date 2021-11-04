@@ -107,11 +107,12 @@ $dotenv->load();
 $dispatcher = new Dispatcher(new Request); // $_GET pour récupérer la demande du client 
 ```
 
-Le Dispatcher possède une méthode run, c'est cette méthode qui va invoquer le router et en fonction de la route faire en sorte que le FronController instancie la bonne méthode dans le bon contrôleur pour répondre à la requête. Le Dispatcher possède une méthode makeController.
+Le Dispatcher possède une méthode run, c'est cette méthode qui va invoquer le router et en fonction de la route faire en sorte l'on instancie la bonne méthode dans du bon contrôleur pour répondre à la requête. Le Dispatcher possède une méthode makeController.
 
 Notez que une fonction comme call_user_func_array permet d'appeler une méthode d'une instance en lui passant des paramètres 
 
 ```php
+// $instance <=> c'est votre controller $method la méthode
 call_user_func_array([$instance, $method], $params);
 ```
 
@@ -126,7 +127,7 @@ public function run()
 }
 ```
 
-- Il faut instancier le bon contrôleur cela va se faire également dans le Dispatcher. Notez que vous pouvez utiliser un service Container pour le passer à l'instance du contrôleur.
+- Dans la méthode makeController vous pouvez passer le Service Container.
 
 ```php
 protected function makeController($controller){
@@ -135,7 +136,7 @@ protected function makeController($controller){
 }
 
 ```
-Enfin la méthode send permet de retourner la réponse à la requête demandée.
+Enfin la méthode send permet de retourner la réponse à la requête demandée. Attention cette méthode doit également gérer le statut de la réponse au client, voir les headers ci-dessous :
 
 ```php
 public function send($status = '200 OK')
@@ -147,6 +148,95 @@ public function send($status = '200 OK')
 }
 ```
 
-## Partie 4 Twig 
+## Partie 4 Twig Moteur de template
 
 Vous pouvez mettre en place le composant Twig pour gérer les vues dans la réponse au client. Utilisez votre Service Container pour préparer Twig et son utilisation dans votre framework.
+
+```php
+$container['twig'] = $container->asShared(function ($c) {
+    return new Twig( /* ... */); // voir sa configuration
+});
+```
+
+## Indications
+
+Vous pouvez utiliser le service container déjà vu en cours ci-dessous :
+
+
+```php
+
+class Container implements \ArrayAccess
+{
+
+    /**
+     * @var array
+     */
+    protected $p = [];
+
+    /**
+     * @param mixed $k
+     * @param mixed $v
+     */
+    public function offsetSet($k, $v)
+    {
+        if (isset($this->p[$k])) {
+            throw new \RuntimeException(\sprintf('Cannot override frozen service "%s".', $k));
+        }
+
+        $this->p[$k] = $v;
+    }
+
+    /**
+     * @param mixed $k
+     * @return mixed
+     */
+    public function offsetGet($k)
+    {
+
+        if (!isset($this->p[$k])) {
+            throw new \InvalidArgumentException(\sprintf('unknow value: %s', $k));
+        }
+
+        if (is_callable($this->p[$k])) {
+            return $this->p[$k]($this);
+        }
+
+        return $this->p[$k];
+    }
+
+    /**
+     * @param mixed $id
+     * @return bool
+     */
+    public function offsetExists($id)
+    {
+        return isset($this->p[$id]);
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function offsetUnset($id)
+    {
+        if (isset($this->p[$id])) {
+            unset($this->p[$id]);
+        }
+    }
+
+    /**
+     * @param callable $callable
+     * @return callable
+     */
+    public function asShared(\Closure $callable)
+    {
+
+        return function ($c) use ($callable) {
+            static $o;
+            if (is_null($o)) {
+                $o = $callable($c);
+            }
+            return $o;
+        };
+    }
+}
+```
