@@ -32,12 +32,16 @@ Créez les dossiers et fichiers distincts suivants :
 
 ```text
 App/ <- l'application
-    HomeController.php
+    HomeController.php. <- extends Controller.php du framework
 public/
     .htaccess
     index.php <-- Point d'entrée de l'application
 resources/ <-- Templating
 src/ <-- Structure de votre Framework
+    Controller.php (Abstract controller, instanciez votre Service Container)
+    Dispatcher.php
+    Request.php
+    ...
 tests/ <-- tests
 app.php <-- Bootstrap
 .env <-- variables d'environnement
