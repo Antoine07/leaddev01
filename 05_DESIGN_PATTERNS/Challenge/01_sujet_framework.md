@@ -38,13 +38,17 @@ public/
     index.php <-- Point d'entrée de l'application
 resources/ <-- Templating
 src/ <-- Structure de votre Framework
+// Au nimimum vous aurez les classes métiers suivantes 
     Controller.php (Abstract controller, instanciez votre Service Container)
     Dispatcher.php
     Request.php
+    Container.php
+    Router.php
     ...
 tests/ <-- tests
 app.php <-- Bootstrap
 .env <-- variables d'environnement
+composer.json <-- gestion des dépendances comme Twig par exemple
 ```
 
 ## Partie 2 point d'entrée et bootstrap
