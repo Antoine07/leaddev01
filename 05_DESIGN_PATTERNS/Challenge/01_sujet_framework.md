@@ -31,6 +31,8 @@ Vous pouvez également vous aider de ce projet personnel :
 Créez les dossiers et fichiers distincts suivants : 
 
 ```text
+App/ <- l'application
+    HomeController.php
 public/
     .htaccess
     index.php <-- Point d'entrée de l'application
