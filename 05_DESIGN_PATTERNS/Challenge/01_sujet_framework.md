@@ -104,7 +104,7 @@ use Dotenv\Dotenv;
 $dotenv = new Dotenv(__DIR__);
 $dotenv->load();
 
-$dispatcher = new Dispatcher(new Request);
+$dispatcher = new Dispatcher(new Request); // $_GET pour récupérer la demande du client 
 ```
 
 Le Dispatcher possède une méthode run, c'est cette méthode qui va invoquer le router et en fonction de la route faire en sorte que le FronController instancie la bonne méthode dans le bon contrôleur pour répondre à la requête. Le Dispatcher possède une méthode makeController.
