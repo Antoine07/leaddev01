@@ -22,7 +22,7 @@ git cat-file -p 3c65 # décompresse un objet Git
 ``` bash
 
 git init # création du dossier .git 
-git add .
+git add . # ajoute tous les fichiers modifiés ou pas encore suivi(s) par Git ATTENTION
 git commit -m "first commit"
 
 # Un fichier créé dans le dépôt n'est pas tracké par défaut, il faut l'ajouter à la staging area une première fois
