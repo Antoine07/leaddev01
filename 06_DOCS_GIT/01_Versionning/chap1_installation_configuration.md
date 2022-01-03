@@ -1,5 +1,16 @@
 ## configuration Git
 
+Git est un logiciel de versionning **décentralisé**. Il ne dépend pas d'un serveur distant pour travailler sur les features d'une application tous les commites fait sont sur votre dépôt personnel avant de les pusher, éventuellement, sur un serveur distant Git.
+
+Vous pouvez modifier en local l'historique de vos propres commits et décider de partager celui-ci une fois une feature terminée. Cependant sur votre propre historique vous pouvez décider de le modifier ou l'annuler tant que vous n'avez pas partager celui-ci avec le serveur distant (les autres développeurs).
+
+```txt
+Historique partagé   Historique perso 
+C1-C2-C3           | Cperso4-Cperso5-Cperso6 
+```
+
+Tant que vous n'avez pas publié vos commits vous avez la liberté d'essayer de l'algorithmique dans votre application sans impacter le travail des autres développeurs.
+
 Définir un utilisateur (obligatoire)
 
 ``` bash
@@ -16,7 +27,11 @@ git config --local user.email tony@tony.fr
 
 ``` bash
 # ajouter un alias à la configuration globale
-git config config --global alias.changes "diff --name-status"
+git config --global alias.changes "diff --name-status"
+
+# créez un racourci pour git status
+git config --global alias.st "status"
+
 # localement ajouter --local à la place de --global
 
 # dans le fichier .gitconfig voici mes alias
