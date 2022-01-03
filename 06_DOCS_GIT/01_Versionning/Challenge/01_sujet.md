@@ -7,6 +7,12 @@ Vous allez créer une petite application avec la technologie que vous souhaitez,
 Chaque fonctionnalité devra être correctement commentée par vos soin, en appliquant les conventions pour faire vos commits. Définissez un Lead Dev dans l'équipe, vous alternerez les rôles durant la semaine sur les différents projets.
 
 
+Utilisez un CRM (Customer Relationship Management), vous pouvez utiliser Trello par exemple, ou notion.so
+
+
+Organiser le plus possible en amont les différentes features à developper et répatisseer le travail. Les développeurs push leurs features dans une branche dev et le Lead fait la revu du code avant de merger dans la branche master.
+
+
 ## Contexte
 
 Vous créez un bouton qui lance trois dés et compte le nombre de fois que l'on obtient un brelan de 6, brelan =  trois dés identiques; à chaque fois que l'on relance l'expérience on ré-initialise un compteur, vous pouvez cependant réfléchir à une persistance.
