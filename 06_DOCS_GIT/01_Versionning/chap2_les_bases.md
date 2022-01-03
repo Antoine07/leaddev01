@@ -12,6 +12,7 @@ Un commit possède un parent, un ancêtre, Git est un graphe orienté
 find .git\objects\ -type f # objets Git Windows
 find .git/objects/ -type f # objets Git Windows
 
+git log 
 git cat-file -p 3c65 # décompresse un objet Git
 
 ```
