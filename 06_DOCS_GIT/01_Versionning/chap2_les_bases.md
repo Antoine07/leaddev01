@@ -86,6 +86,11 @@ git tag v1
 # Etiquetter après coup
 git tag -a v1.0.1 -m "version 1.0.1" 9fceb2
 
+# liste les tags
+git tag
+
+# liste les tags avec un pattern
+git tag -l v1*
 ```
 
 ## Branches
