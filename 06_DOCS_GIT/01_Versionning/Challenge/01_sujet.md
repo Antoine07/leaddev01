@@ -17,7 +17,7 @@ Organiser le plus possible en amont les différentes features à developper et r
 
 Vous créez un bouton qui lance trois dés et compte le nombre de fois que l'on obtient un brelan de 6, brelan = trois dés identiques; à chaque fois que l'on relance l'expérience, on garde en mémoire les expériences précédentes, vous pouvez garder soit tous les résultats obtenus, soit uniquement les brelans de 6.
 
-Vous pouvez améliorer l'expérience en donnant la possiblité de lancer plusieurs ces 3 dés.
+Attention, vous devez fixer le nombre de fois que l'on lance cette expérience, une expérience étant un lancer de trois dés.
 
 L'application possède trois pages : la page Home qui permet de lancer l'expérience, une page description qui décrit le jeu et une page permettant de consulter les statistiques.
 
