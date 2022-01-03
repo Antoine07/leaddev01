@@ -43,7 +43,7 @@ git config --global alias.st "status"
 	amend = commit --amend
     st = status
     who = shortlog -sne
-	oneline = log --pretty=oneline --abbrev-commit --graph
+    oneline = log --pretty=oneline --abbrev-commit --graph
     changes = diff --name-status
     dic = diff --cached
     diffstat = diff --stat
