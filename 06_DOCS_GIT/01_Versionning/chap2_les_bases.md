@@ -9,7 +9,8 @@ Un commit possède un parent, un ancêtre, Git est un graphe orienté
 ## Commandes de plomberies
 
 ``` bash
-find .git\objects\ -type f # objets Git
+find .git\objects\ -type f # objets Git Windows
+find .git/objects/ -type f # objets Git Windows
 
 git cat-file -p 3c65 # décompresse un objet Git
 
