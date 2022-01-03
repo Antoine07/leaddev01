@@ -91,6 +91,9 @@ git tag
 
 # liste les tags avec un pattern
 git tag -l v1*
+
+# show tag avec information
+git show v1.0.0 
 ```
 
 ## Branches
