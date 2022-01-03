@@ -27,7 +27,11 @@ git config --local user.email tony@tony.fr
 
 ``` bash
 # ajouter un alias à la configuration globale
-git config config --global alias.changes "diff --name-status"
+git config --global alias.changes "diff --name-status"
+
+# créez un racourci pour git status
+git config --global alias.st "status"
+
 # localement ajouter --local à la place de --global
 
 # dans le fichier .gitconfig voici mes alias
