@@ -1,5 +1,16 @@
 ## configuration Git
 
+Git est un logiciel de versionning **décentralisé**. Il ne dépend pas d'un serveur distant pour travailler sur les features d'une application tous les commites fait sont sur votre dépôt personnel avant de les pusher, éventuellement, sur un serveur distant Git.
+
+Vous pouvez modifier en local l'historique de vos propres commits et décider de partager celui-ci une fois une feature terminée. Cependant sur votre propre historique vous pouvez décider de le modifier ou l'annuler tant que vous n'avez pas partager celui-ci avec le serveur distant (les autres développeurs).
+
+```txt
+Historique partagé   Historique perso 
+C1-C2-C3           | Cperso4-Cperso5-Cperso6 
+```
+
+Tant que vous n'avez pas publié vos commits vous avez la liberté d'essayer de l'algorithmique dans votre application sans impacter le travail des autres développeurs.
+
 Définir un utilisateur (obligatoire)
 
 ``` bash
