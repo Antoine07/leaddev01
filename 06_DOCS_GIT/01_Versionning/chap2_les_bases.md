@@ -98,7 +98,7 @@ git show v1.0.0
 
 ## Branches
 
-Une branche n'est rien d'autre qu'un pointeur sur commit
+Une branche n'est rien d'autre qu'un pointeur sur commit. Attention lorsque vous créez une branche, si vous n'avez pas fait de commit sur cette branche encore, vous pouvez parfaitement aller sur d'autres branches même si vous avez modifier un fichier ou ajouter ce dernier dans la staging. Il faut créer un premier commit pour que la nouvelle branche "existe" vraiement.
 
 ``` bash
 
