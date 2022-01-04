@@ -16,18 +16,40 @@ Budget pour ce client : 2500 euros, temps estimé pour le développement : 1 jou
 
 1. Vous êtes pour l'instant seul maitre d'ouvrage, à 16h votre Lead Dev fera la revu de code avec chaque équipe. Chaque développeur devra justifié d'au moins une feature réalisée.
 
-2. Documentation technique & présentation & commentaires
+2. Documentations
 
-Vous devez proposez un design d'architecture logiciel, pour développer le projet, en documentant vos choix. Vous pourriez par exemple proposer une architecture Symfony **simple**, augmentée de quelques composants spécifiques. **Précisez les composants que vous souhaitez utiliser : Doctrine, Twig, ...**. Créez un doc un readme.md ou un PDF (à placez dans la colonne DOCS du CRM).
+Mettez ces documents dans le partie DOCS du CRM.
 
-Détaillez le choix de la persistance des données.
+- L'architecture de la solution logiciel 
 
-Détaillez également les features :
+En quelques lignes, vous devez proposez un design d'architecture logiciel, pour développer le projet. Vous pourriez par exemple proposer une architecture Symfony **simple**, augmentée de quelques composants spécifiques. **Précisez les composants que vous souhaitez utiliser : Doctrine, Twig, ...**. 
 
-- Service : CalculMultiplication
+- Les données
+
+Détaillez le choix de la persistance des données, avec un schéma pour les données.
+
+- Détaillés les features dans le CRM
+
+Détaillez les features, par exemple Service : CalculMultiplication
   _Ce service permet de générer une multiplication aléatoirement ..._
 
-Créez un petit PDF présentant les deux ou trois développeurs ayant participés au projet. Mettez ce document dans le partie DOCS du CRM.
+- Présentez-vous
+
+Créez un petit PDF présentant les deux ou trois développeurs ayant participés au projet. 
+
+- Présentez l'interface utilisateur
+
+Dans cette partie faites une présentation (Wireframe) des 4 pages théoriques pour le jeu 
+
+ * La page d'inscription : rentrez son pseudo
+
+ * La page du jeu en soi
+
+ * La page des résultats
+
+*Pour l'aspect UX pensez simplement à faire des pages "navigables".*
+
+3. Commentez dans le code vos méthodes en suivant la norme PHPDOC ( nous verrons en détails par la suite)
 
 Chaque méthode devra être correctement commentée comme suit :
 
@@ -50,7 +72,7 @@ Chaque méthode devra être correctement commentée comme suit :
 
 ```
 
-3. GitFlow
+4. GitFlow
 
 Respectez le gitflow suivant, les branches entres crochets sont des branches éphémères. Créez un commit de merge même pour si vous faites du fast-forward (voir la documentation)
 
@@ -67,13 +89,13 @@ dev     ----------
 
 Tous les commits devront être correctement formés : un titre et un texte qui explique chaque feature.
 
-4. CRM
+5. CRM
 
 Créez les trois colonnes : TODO, DOING & DONE, ainsi que les deux colonnes : TESTS et DOCS. Les documents techniques, de composants, ... seront placés dans la colonne DOCS, et pourront être consulté par le Lead Dev
 
 Vous devez réfléchir à l'ordre dans lequel vous allez faire le découpage des features, précisez dans votre organisation cet ordre.
 
-5. Exercices Bugs & simulations
+6. Exercices Bugs & simulations
 
 - Un des développeur crée un bug dans l'application, par exemple une erreur dans votre algorithmique pour calculer les multiplications (service). Constatez ce bug dans les tests unitaires, puis blamez le developpeur qui a fait cette erreur.
 
