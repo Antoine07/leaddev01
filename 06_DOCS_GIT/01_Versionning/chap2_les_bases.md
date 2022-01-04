@@ -162,7 +162,7 @@ git commit # message de merge par défaut
 ```
 On peut avoir plusieurs conflits à gérer dans plusieurs fichiers
 
-## Reset annulation
+## Reset & restore annulation
 La commande reset modifie l'historique, **il ne faut jamais le faire sur des commits déjà publiés!**
 
 ``` bash
@@ -175,11 +175,10 @@ git reset --soft HEAD~
 # Annule le dernier commit et supprime les modifications...(DANGER)
 git reset --hard HEAD~
 
-# Retire un fichier de la staging area, sans perte de modif
-git add [fileName] # ajout dans la staging area
-git reset HEAD [fileName] # on retire le fichier de la staging
+# Pour retirer de la staging un fichier en particulier, on utilise la commande --restore
+git restore --staged category.html
 
-# Revenir à l'état du commit suivant historique supprimé (DANGER), 
+# Revenir à l'état du commit suivant, historique supprimé c'est-à-dire les commits DANGER, 
 # le code n'est pas supprimé mais remis dans le WD.
 git reset f597d47552d 
 
