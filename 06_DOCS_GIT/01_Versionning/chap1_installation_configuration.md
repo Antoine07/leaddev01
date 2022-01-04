@@ -1,6 +1,6 @@
 ## configuration Git
 
-Git est un logiciel de versionning **décentralisé**. Il ne dépend pas d'un serveur distant pour travailler sur les features d'une application tous les commites fait sont sur votre dépôt personnel avant de les pusher, éventuellement, sur un serveur distant Git.
+Git est un logiciel de versionning **décentralisé**. Il ne dépend pas d'un serveur distant pour travailler sur les features d'une application, tous les commits sont sur votre dépôt personnel tant qu'ils ne sont pas pusher ne sont pas partagés avec les autres développeurs.
 
 Vous pouvez modifier en local l'historique de vos propres commits et décider de partager celui-ci une fois une feature terminée. Cependant sur votre propre historique vous pouvez décider de le modifier ou l'annuler tant que vous n'avez pas partager celui-ci avec le serveur distant (les autres développeurs).
 
