@@ -1,6 +1,6 @@
 # Git aide
 
-Git est décentralisé et distribué.
+Git est décentralisé et distribué. Il permet de travailler localement sans être dépendant d'un serveur distant
 
 Les objets de Git: blob, tag, commit, tree
 
