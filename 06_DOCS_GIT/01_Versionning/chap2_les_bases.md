@@ -179,7 +179,8 @@ git reset --hard HEAD~
 git add [fileName] # ajout dans la staging area
 git reset HEAD [fileName] # on retire le fichier de la staging
 
-# Revenir à l'état du commit suivant historique supprimé (DANGER)
+# Revenir à l'état du commit suivant historique supprimé (DANGER), 
+# le code n'est pas supprimé mais remis dans le WD.
 git reset f597d47552d 
 
 ...
