@@ -280,7 +280,11 @@ C commit revert (hash eee, même état que bbb, annulation des modifications de 
 
 ## Amend
 
-Dans le cas où on a oublié du code et que l'on vient de faire un commit. Ou que l'on souhaite modifier le dernier message de commit.
+Deux utilisations possibles.
+
+1. Dans le cas où on a oublié du code et que l'on vient de faire un commit. 
+
+2. Ou que l'on souhaite modifier le dernier message de commit.
 
 Ces actions ne sont valables que si et seulement si vous n'avez pas publié vos modifications.
 
@@ -296,6 +300,8 @@ git commit --amend # associe les changements au dernier commit, le message du de
 
 git commit --amend
 
+# Mais on ne peut pas corriger le message ... On l'écrase avec le nouveau message
+git commit --amend -m "nouveau message court"
 ```
 ## Stash (remisé)
 
