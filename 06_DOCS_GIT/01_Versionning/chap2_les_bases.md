@@ -280,27 +280,29 @@ C commit revert (hash eee, même état que bbb, annulation des modifications de 
 
 ## Amend
 
+On rappelle que : ces actions ne sont valables que **si et seulement si vous n'avez pas publié vos modifications.***
+
 Deux utilisations possibles.
 
 1. Dans le cas où on a oublié du code et que l'on vient de faire un commit. 
 
-2. Ou que l'on souhaite modifier le dernier message de commit.
-
-Ces actions ne sont valables que si et seulement si vous n'avez pas publié vos modifications.
-
-``` bash
-
+```bash
+# Un commit déjà fait pour les modifications dans index.html
 # On ajoute le code qui manquait
 vim index.html
 
 git add index.html
 git commit --amend # associe les changements au dernier commit, le message du dernier commit s'ouvrira dans l'éditeur par défaut
+```
 
+2. Si l'on souhaite modifier le dernier message de commit.
+
+``` bash
 # Si on souhaite uniquement modifier le message du commit
 
 git commit --amend
 
-# Mais on ne peut pas corriger le message ... On l'écrase avec le nouveau message
+# Ou en écrasant un message de commit court par un autre
 git commit --amend -m "nouveau message court"
 ```
 ## Stash (remisé)
