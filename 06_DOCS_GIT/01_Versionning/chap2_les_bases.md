@@ -175,6 +175,12 @@ git reset --soft HEAD~
 # Annule le dernier commit et supprime les modifications...(DANGER)
 git reset --hard HEAD~
 
+# pour supprimer les modifications dans un fichier non commité, efface tout le code ajouté dans le WD
+git restore category.html
+
+# Pour tous les fichiers
+git restore . 
+
 # Pour retirer de la staging un fichier en particulier, on utilise la commande --restore
 git restore --staged category.html
 
