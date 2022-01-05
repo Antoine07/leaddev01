@@ -65,6 +65,8 @@ Dans cette partie faites une présentation (Wireframe) des 4 pages théoriques p
  * La page du jeu en soi
 
  * La page des résultats
+ 
+ * Mentions légales (lorem ...)
 
 *Pour l'aspect UX pensez simplement à faire des pages "cohérentes".*
 
@@ -124,6 +126,6 @@ Vous devez réfléchir à l'ordre dans lequel vous allez faire le découpage des
 
 6. Exercices Bugs & simulations
 
-- Un des développeur crée un bug dans l'application, par exemple une erreur dans votre algorithmique pour calculer les multiplications (service). Constatez ce bug dans les tests unitaires, puis blamez le developpeur qui a fait cette erreur.
+- Un des développeur crée un bug dans l'application, par exemple une erreur dans votre algorithmique pour calculer les multiplications (service). Constatez ce bug dans les tests unitaires, puis blamez le developpeur qui a fait cette erreur et créez une branche HoFix.
 
 - Créez un bug une fois l'application en pré-prod, voir le GitFlow plus haut, créez une branche éphémère HotFix, mais ne la supprimez pas.
