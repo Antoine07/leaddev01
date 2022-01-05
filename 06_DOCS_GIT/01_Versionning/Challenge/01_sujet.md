@@ -12,7 +12,6 @@ Utilisez un CRM (Customer Relationship Management), vous pouvez utiliser Trello 
 
 Organiser le plus possible en amont les différentes features à developper et répatisseer le travail. Les développeurs push leurs features dans une branche dev et le Lead fait la revu du code avant de merger dans la branche master.
 
-
 ## Contexte
 
 Vous créez un bouton qui lance trois dés et compte le nombre de fois que l'on obtient un brelan de 6, brelan = trois dés identiques; à chaque fois que l'on relance l'expérience, on garde en mémoire les expériences précédentes, vous pouvez garder soit tous les résultats obtenus, soit uniquement les brelans de 6.
