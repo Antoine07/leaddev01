@@ -2,4 +2,6 @@
 
 namespace Core\Model\Model;
 
-class B{}
+class B
+{
+}

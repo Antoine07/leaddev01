@@ -2,4 +2,6 @@
 
 namespace Core\Model\Model;
 
-function functionB(){}
+function functionB()
+{
+}
