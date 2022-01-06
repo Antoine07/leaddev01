@@ -12,7 +12,7 @@ Il faut dès le début du projet appliquer les principes d'organisation du code 
 
 - Utilisez des composants du Framework
 
-- En PHP PEAR
+- En PHP PEAR (compiler dans votre noyau PHP), ou utilisez des composants tiers.
 
 ## Code 
 
@@ -22,7 +22,7 @@ Il faut dès le début du projet appliquer les principes d'organisation du code 
 
 - Nommage des méthodes : monNomDeMethode
 
-- Nommage des propriétés privées (faculatif) _monNomDeMethode
+- Nommage des propriétés et méthodes privées (faculatif) _monNomDeMethode
 
 - Nommage des constantes : MA_CONSTANTE
 
@@ -37,6 +37,8 @@ Vos fichiers ne doivent pas comporter trop de ligne de code, une classe avec 15 
 Chaque méthode ne doit pas également comporter trop de lignes de code, 35 à 40 est un maximum.
 
 Vous devez également appliquer les principes SOLID dans tout votre développement. Et séparez les couches logiques de l'application : MVC, par exemple, pas de SQL dans les templates.
+
+On peut appliquer la règle du 5 10 20. Mais vous êtes également libre de vous adaptez par rapport à ces principes. On peut retenir que le code doit être bien découpé en "petites" fonctionnalités, peu de ligne de code par méthode et ne pas hésiter à faire plusieurs classes ou traits pour ne pas faire des classes ayant trop de responsabilités.
 
 ## Outils d'analyse de votre code
 
