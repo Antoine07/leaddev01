@@ -22,7 +22,7 @@ Il faut dès le début du projet appliquer les principes d'organisation du code 
 
 - Nommage des méthodes : monNomDeMethode
 
-- Nommage des propriétés privées (faculatif) _monNomDeMethode
+- Nommage des propriétés et méthodes privées (faculatif) _monNomDeMethode
 
 - Nommage des constantes : MA_CONSTANTE
 
