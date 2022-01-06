@@ -12,7 +12,7 @@ Il faut dès le début du projet appliquer les principes d'organisation du code 
 
 - Utilisez des composants du Framework
 
-- En PHP PEAR
+- En PHP PEAR (compiler dans votre noyau PHP), ou utilisez des composants tiers.
 
 ## Code 
 
