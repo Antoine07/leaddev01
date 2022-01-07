@@ -45,7 +45,7 @@ git config-global alias "changes: diff --name-status"
 [ ] 3
 
 ```bash
-git config --global alias.changes "git changes diff --name-status"
+git config --global alias.changes "diff --name-status"
 ```
 
 [ ] 4
