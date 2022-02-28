@@ -49,3 +49,16 @@ jobs:
 - php-actions/composer@v5 installera les dépendances de votre projet
 
 - php-actions/phpunit@v3  lancera les tests avec phpunit
+
+
+## Organisation pour le travail en équipe
+
+### Proposition 
+
+Soit en pull_request soit en direct mais sur les features.
+
+- Chaque developpeur une fois ses tests en local fait et qui passent au vert, les push (feature) sur le dépôt CI.
+
+- Le lead reçoit le mail qui confirme que les tests sont passés, il pull la feature merge dans la branche Dev et push ce merge sur le dépôt CI.
+
+- Si aucune régression on continue.
